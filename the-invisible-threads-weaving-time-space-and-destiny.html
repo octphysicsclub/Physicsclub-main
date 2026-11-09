@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Invisible Threads: Weaving Time, Space and Destiny — STEM October Physics Club</title>
-    <meta name="description" content="The Official Physics Club of October STEM School. Providing world-class physics training, competitions, and academic publications.">
+    <meta name="description" content="Explore how general relativity weaves space and time: gravitational lensing, time dilation near Everest vs sea level, GPS satellite relativistic corrections, gravitational waves, and wormholes.">
     <link rel="icon" href="assets/uploads/2023/07/cropped-Icon-150x150.png" sizes="32x32" type="image/png">
     
-    <!-- Google Fonts: Montserrat & Inter matching IPhR Subdomain -->
+    <!-- Google Fonts: Montserrat & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
+    <!-- KaTeX for High-Quality Mathematical Typesetting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -20,7 +34,9 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Montserrat', 'Inter', 'sans-serif'],
+                        sans: ['Inter', 'Montserrat', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
                     },
                     colors: {
                         iphr: {
@@ -44,17 +60,62 @@
     <style>
         body {
             background-color: #121116;
-            color: #ededed;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* IPhR Glowing text effect */
-        .iphr-glow-text {
-            text-shadow: 0 0 30px rgba(82, 139, 242, 0.5);
+        /* KaTeX Equation Card Styling */
+        .katex-display {
+            margin: 1.5rem 0 !important;
+            padding: 1.25rem 1.5rem !important;
+            background: linear-gradient(135deg, rgba(82, 139, 242, 0.05) 0%, rgba(18, 17, 22, 0.7) 100%) !important;
+            border: 1px solid rgba(82, 139, 242, 0.2) !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5) !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .iphr-subtle-glow {
-            text-shadow: 0 0 20px rgba(82, 139, 242, 0.3);
+        .katex-display:hover {
+            border-color: rgba(82, 139, 242, 0.4) !important;
+            box-shadow: 0 12px 30px -6px rgba(82, 139, 242, 0.15) !important;
+        }
+
+        .katex {
+            font-size: 1.15em !important;
+            color: #f1f5f9;
+        }
+
+        /* Lead Paragraph */
+        .lead-paragraph {
+            font-size: 1.18rem;
+            line-height: 1.85;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        /* Section Styling */
+        .article-section h2 {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .article-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3.5rem;
+            height: 3px;
+            background: linear-gradient(90deg, #528bf2, transparent);
+            border-radius: 2px;
         }
 
         /* Ambient line background */
@@ -66,7 +127,9 @@
         }
     </style>
 </head>
-<body class="bg-[#121116] text-[#ededed] min-h-screen flex flex-col selection:bg-[#528bf2] selection:text-white antialiased">
+<body class="bg-[#121116] text-[#e2e8f0] min-h-screen flex flex-col selection:bg-[#528bf2] selection:text-white antialiased">
+
+<!-- Header Navigation -->
 <header class="fixed top-0 w-full bg-gradient-to-r from-[#030d2af4] to-[#0a1a4df4] shadow-lg py-4 z-[100] transition-all duration-300 select-none">
     <div class="max-w-[1300px] mx-auto flex items-center justify-between w-full px-4 sm:px-6">
         
@@ -82,43 +145,49 @@
         <!-- Desktop Navigation Links -->
         <nav class="hidden xl:flex items-center gap-6">
             <ul class="flex items-center gap-6">
-                                    <li>
-                        <a href="index.html" 
-                           class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
-                            Home                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
-                        </a>
-                    </li>
-                                    <li>
-                        <a href="about.html" 
-                           class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
-                            About                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
-                        </a>
-                    </li>
-                                    <li>
-                        <a href="partners.html" 
-                           class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
-                            Partners                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
-                        </a>
-                    </li>
-                                    <li>
-                        <a href="competition.html" 
-                           class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
-                            Competition                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
-                        </a>
-                    </li>
-                                    <li>
-                        <a href="donations.html" 
-                           class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
-                            Donations                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
-                        </a>
-                    </li>
-                                    <li>
-                        <a href="compass.html" 
-                           class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
-                            COMPASS                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
-                        </a>
-                    </li>
-                                <li>
+                <li>
+                    <a href="index.html" 
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html" 
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="partners.html" 
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Partners
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://iphr.octphysicsclub.org/" 
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Competition
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="donations.html" 
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Donations
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="compass.html" 
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        COMPASS
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
                     <a href="publications.html" 
                        class="bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white px-6 py-2.5 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg hover:shadow-xl inline-block">
                         Publications
@@ -147,39 +216,38 @@
     <!-- Mobile Drawer Menu -->
     <div id="mobile-nav-drawer" class="hidden xl:hidden border-t border-white/10 bg-[#030d2af4] px-6 py-4 transition-all duration-300">
         <ul class="flex flex-col gap-3">
-                            <li>
-                    <a href="index.html" 
-                       class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
-                        Home                    </a>
-                </li>
-                            <li>
-                    <a href="about.html" 
-                       class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
-                        About                    </a>
-                </li>
-                            <li>
-                    <a href="partners.html" 
-                       class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
-                        Partners                    </a>
-                </li>
-                            <li>
-                    <a href="competition.html" 
-                       class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
-                        Competition                    </a>
-                </li>
-                            <li>
-                    <a href="donations.html" 
-                       class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
-                        Donations                    </a>
-                </li>
-                            <li>
-                    <a href="compass.html" 
-                       class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
-                        COMPASS                    </a>
-                </li>
-                        <li class="pt-2">
-                <a href="publications.html" 
-                   class="block w-full text-center bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white py-3 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg">
+            <li>
+                <a href="index.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="about.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="partners.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Partners
+                </a>
+            </li>
+            <li>
+                <a href="https://iphr.octphysicsclub.org/" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Competition
+                </a>
+            </li>
+            <li>
+                <a href="donations.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Donations
+                </a>
+            </li>
+            <li>
+                <a href="compass.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    COMPASS
+                </a>
+            </li>
+            <li class="pt-2">
+                <a href="publications.html" class="block w-full text-center bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white py-3 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg">
                     Publications
                 </a>
             </li>
@@ -214,88 +282,262 @@
     <div class="absolute inset-0 bg-[url('assets/iphr/bg_img_line.png')] bg-cover bg-center bg-no-repeat opacity-20 pointer-events-none" style="z-index: 0;"></div>
 
     <div class="relative max-w-4xl mx-auto px-6 py-32" style="z-index: 1;">
-        <!-- Breadcrumb & Tag -->
-        <div class="mb-6 flex items-center gap-3">
-            <a href="magazine.html" class="text-xs uppercase tracking-wider font-semibold text-[#528bf2] hover:text-[#6ba3ff] transition-colors">
-                &larr; Magazine
+        
+        <!-- Breadcrumbs & Category Badge -->
+        <div class="mb-6 flex flex-wrap items-center gap-3">
+            <a href="magazine.html" class="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-[#528bf2] hover:text-[#6ba3ff] transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <span>Magazine</span>
             </a>
-            <span class="text-gray-500">&bull;</span>
-            <span class="px-3 py-0.5 rounded-full text-xs font-semibold bg-[#528bf2]/10 border border-[#528bf2]/20 text-[#528bf2]">
+            <span class="text-gray-600">&bull;</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#528bf2]/10 border border-[#528bf2]/30 text-[#528bf2]">
                 General Relativity & Cosmology
             </span>
         </div>
 
-        <!-- Article Title & Meta -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+        <!-- Article Title & Header -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
             The Invisible Threads: Weaving Time, Space and Destiny
         </h1>
-        <div class="flex items-center gap-4 text-sm text-gray-400 border-b border-white/10 pb-8 mb-10">
-            <span>Published by STEM October Physics Club</span>
+        
+        <p class="text-lg text-cyan-300 font-medium mb-6 italic">
+            Swim in the wonders of the spacetime fabric, and see how everything swims in it.
+        </p>
+
+        <!-- Metadata Bar -->
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400 border-b border-white/10 pb-6 mb-10">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-[#528bf2]/20 border border-[#528bf2]/30 flex items-center justify-center text-[#528bf2] font-bold text-xs">
+                    AW
+                </div>
+                <span>By <strong class="text-white">Adel Wasfy</strong></span>
+            </div>
             <span>&bull;</span>
-            <span>October 2024</span>
+            <span>September 6, 2025</span>
             <span>&bull;</span>
-            <span>7 min read</span>
+            <span>8 min read</span>
+            <span>&bull;</span>
+            <span class="text-emerald-400 font-medium">LaTeX Math Enabled</span>
         </div>
 
         <!-- Article Content -->
-        <article class="prose prose-invert max-w-none text-gray-300 text-base sm:text-lg leading-relaxed space-y-6">
-            <p>
+        <article class="article-section text-gray-300 text-base sm:text-lg leading-relaxed space-y-7">
+            
+            <p class="lead-paragraph">
                 It’s midnight. You’re standing in a quiet valley. The mountains around you fade into dark silhouettes, and the starlight above fills you with excitement for a night of stargazing through your telescope. You focus on what looks like a bright star with a tiny blemish. You adjust the focus, and in a breath of realization, you find that it’s not a star at all, but Jupiter, distant yet luminous. You wonder about the long journey of each photon, reflected from Jupiter’s cloud tops, crossing the cosmic sea to meet your gaze.
             </p>
 
             <p>
-                The answer is something we have never known in classical Newton’s equations. It lies in Einstein’s general relativity. Jupiter's large mass causes a curvature in spacetime, bending the path those photons follow, so that without you even noticing, Jupiter is subtly changing not just your view of the universe, but also the moment in time you’re experiencing.
+                The answer is something we have never known in classical Newton’s equations. It lies in Einstein’s general relativity. Jupiter's large mass causes a curvature in a geometrical manifold known as the <em>Curvature of Spacetime</em>, bending the geodesic path those photons follow, so that without you even noticing, Jupiter is subtly changing not just your view of the universe, but also the moment in time you’re experiencing.
             </p>
 
-            <div class="my-8 p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <h3 class="text-xl font-bold text-white mb-2">Gravitational Lensing & 1919 Eclipse</h3>
-                <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-                    The idea of light deflecting near massive objects was a bold prediction in Einstein’s general relativity. In 1919, when Sir Arthur Eddington led an expedition to observe a total solar eclipse, scientists photographed stars located behind the Sun. To their surprise, the apparent positions had shifted slightly outward, proving that gravity bends light along spacetime geodesics:
-                </p>
-                <div class="mt-4 p-4 rounded-xl bg-black/50 border border-white/5 font-mono text-cyan-300 text-sm overflow-x-auto text-center">
-                    &theta; &approx; (4 G M) / (c² b) &approx; 1.75 arcsec
-                </div>
+            <!-- Section 1: Bending of Light -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Bending of Light – From the Sun to Black Holes</h2>
+            
+            <p>
+                The idea of light deflecting near massive objects like Jupiter, the Sun, and black holes was a bold prediction in Einstein’s general relativity that met widespread initial skepticism. However, in May 1919, when Sir Arthur Eddington led an astronomical expedition to the island of Príncipe to photograph a total solar eclipse, scientists captured stars located visually behind the Sun. To their astonishment, the stars’ apparent positions had shifted outward away from the solar limb.
+            </p>
+
+            <p>
+                The cause? Light originating from those distant stars had bent as it traversed the gravitational curvature produced by the Sun's mass. This historic measurement provided the world's first experimental validation that gravity deflects electromagnetic radiation—a phenomenon now termed <strong>gravitational lensing</strong>.
+            </p>
+
+            <!-- Figure: Starlight Deflection -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="assets/uploads/2025/09/PSE10_Fig_38-18_starlight_deflection.png" 
+                     alt="Light bending around the sun" 
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-lg">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 1: Geometric deflection of starlight grazing the solar limb during the 1919 total eclipse.
+                </figcaption>
+            </figure>
+
+            <p>
+                The observed angle of deflection can be derived directly from the Schwarzschild metric of general relativity. For a photon grazing a spherically symmetric mass $M$ at an impact parameter $b$, the total angular deflection $\theta$ is given by:
+            </p>
+
+            $$\theta \approx \frac{4GM}{c^2 b}$$
+
+            <p>
+                For light just grazing the Sun’s surface (where the impact parameter equals the solar radius $b \approx R_\odot$ and the mass is $M_\odot$), we write:
+            </p>
+
+            $$\theta_\odot \approx \frac{4GM_\odot}{c^2 R_\odot}$$
+
+            <p>
+                Substituting the known physical constants:
+                <br>&bull; Universal gravitational constant $G = 6.674 \times 10^{-11}\text{ N}\cdot\text{m}^2/\text{kg}^2$
+                <br>&bull; Solar mass $M_\odot = 1.989 \times 10^{30}\text{ kg}$
+                <br>&bull; Speed of light $c = 2.998 \times 10^8\text{ m/s}$
+                <br>&bull; Solar radius $R_\odot = 6.963 \times 10^8\text{ m}$
+            </p>
+
+            $$\theta = \frac{4 \times \left(6.674 \times 10^{-11}\right) \times \left(1.989 \times 10^{30}\right)}{\left(3.00 \times 10^8\right)^2 \times \left(6.963 \times 10^8\right)}$$
+
+            $$\theta \approx 8.48 \times 10^{-6}\text{ rad} = 1.75\text{ arcseconds}$$
+
+            <p>
+                This exact value of $1.75^{\prime\prime}$ was confirmed by Eddington’s expedition plates, permanently cementing Einstein’s theory over the Newtonian corpuscular value ($0.875^{\prime\prime}$, which predicted only half the actual bending).
+            </p>
+
+            <!-- Section 2: Spacetime Fabric and Time Dilation -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">The Spacetime Fabric and Time Dilation</h2>
+
+            <!-- Figure: Spacetime deformation GIF -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="assets/uploads/2025/09/17696546dacaaa26aeb8dd7f1316b207.gif" 
+                     alt="The spacetime fabric deforming around a large mass" 
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-2xl">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 2: Animated representation of a massive celestial body generating curvature in the spacetime continuum.
+                </figcaption>
+            </figure>
+
+            <p>
+                Spacetime is the four-dimensional manifold in which all particles, photons, and fields propagate. Its deformation does not solely redirect trajectories of light; it alters the fundamental flow of proper time $\tau$—the fourth dimension in relativity.
+            </p>
+
+            <p>
+                Consider a classic thought experiment: envision two ultra-precise atomic clocks. Clock 1 sits on the summit of Mount Everest (altitude $\approx 8,848\text{ m}$), while Clock 2 rests at sea level. Because Clock 2 is immersed deeper within Earth's gravitational potential well, it experiences <strong>gravitational time dilation</strong>. Relative to an observer on the mountain, the sea-level clock ticks measurably slower.
+            </p>
+
+            <p>
+                Accounting for both gravitational red-shift and kinematic time dilation from Earth's rotation, the fractional proper time difference is expressed as:
+            </p>
+
+            $$\frac{\Delta\tau}{\tau} = \frac{GM}{c^2}\left(\frac{1}{r_{\text{sea}}} - \frac{1}{r_{\text{everest}}}\right) - \frac{v_{\text{sea}}^2 - v_{\text{everest}}^2}{2c^2}$$
+
+            $$\frac{\Delta\tau}{\tau} \approx 9.6577 \times 10^{-13} \implies \Delta\tau_{\text{per day}} \approx 83.44\text{ ns/day}$$
+
+            <!-- Figure: Time dilation in clocks -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="assets/uploads/2025/09/Picture3.png" 
+                     alt="Time dilation in clocks experiment" 
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 3: Atomic clock verification of gravitational and kinematic time dilation across altitudes.
+                </figcaption>
+            </figure>
+
+            <p>
+                While nanoseconds seem imperceptible in everyday life, this relativistic difference becomes vital in aerospace and satellite telecommunications. The Global Positioning System (GPS) constellation operates 31 satellites orbiting at an altitude of approximately $20,200\text{ km}$ ($r_{\text{S}} \approx 26,578\text{ km}$).
+            </p>
+
+            <p>
+                At this high altitude:
+                <br>&bull; <strong>Gravitational time dilation:</strong> The weaker gravity causes satellite clocks to tick faster by $+45.9\ \mu\text{s/day}$.
+                <br>&bull; <strong>Special relativistic kinematic dilation:</strong> The satellite's orbital speed ($v_{\text{S}} \approx 3.87\text{ km/s}$) causes clocks to tick slower by $-7.2\ \mu\text{s/day}$.
+            </p>
+
+            $$\frac{\Delta\tau}{\tau} = \frac{GM}{c^2}\left(\frac{1}{r_{\text{E}}} - \frac{1}{r_{\text{S}}}\right) - \frac{v_{\text{S}}^2 - v_{\text{E}}^2}{2c^2}$$
+
+            $$\frac{\Delta\tau}{\tau} = \frac{3.986 \times 10^{14}}{(2.998 \times 10^8)^2} \left(\frac{1}{6378137} - \frac{1}{26578137}\right) - \frac{(3872.6)^2 - (465.1)^2}{2(2.998 \times 10^8)^2}$$
+
+            $$= 5.2848 \times 10^{-10} - 8.2230 \times 10^{-11} = 4.4625 \times 10^{-10}$$
+
+            $$\Delta\tau_{\text{per day}} = 4.4625 \times 10^{-10} \times 86400\text{ s} \approx +38.56\ \mu\text{s/day}$$
+
+            <!-- Figure: Earth mass bending spacetime affecting GPS -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="assets/uploads/2025/09/Picture4.jpg" 
+                     alt="The Earth's mass bending the spacetime fabric, affecting satellites" 
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 4: Gravitational potential well of Earth and relativistic time corrections applied to GPS satellite orbits.
+                </figcaption>
+            </figure>
+
+            <div class="my-6 p-5 rounded-2xl bg-[#528bf2]/10 border border-[#528bf2]/30 text-sm sm:text-base leading-relaxed">
+                <strong class="text-white">Why Relativistic Precision Matters:</strong> Light propagates at approximately $30\text{ cm/ns}$ ($3 \times 10^8\text{ m/s}$). An uncorrected error of $38.56\ \mu\text{s}$ per day would translate into a navigational drift of over <strong>$11.5\text{ km}$ every single day</strong>! GPS receivers would become entirely unusable within minutes without general relativistic factory presets in satellite clocks.
             </div>
 
-            <h2 class="text-2xl font-bold text-white pt-4">The Spacetime Fabric & Time Dilation</h2>
-            <p>
-                This fabric not only bends the path of light around massive celestial bodies, but it also affects the flow of time—the fourth dimension in spacetime. Hold two clocks in your mind: clock 1 on the Mount Everest summit, and clock 2 at sea level. The clock located at sea level will tick slightly slower than the clock on the mountain. This happens due to gravitational time dilation: time runs differently depending on how deep one is in the gravitational well.
-            </p>
-
-            <div class="my-6 p-4 rounded-xl bg-black/50 border border-white/5 font-mono text-cyan-300 text-xs sm:text-sm overflow-x-auto text-center">
-                &Delta;&tau; / &tau; = (G M / c²) &bull; (1/r_sea - 1/r_everest) &minus; (v_sea² - v_everest²) / (2c²) &approx; 83.44 ns/day
-            </div>
+            <!-- Section 3: Gravitational Waves -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Gravitational Waves: Ripples in Spacetime</h2>
 
             <p>
-                This effect is critical in engineering. Satellites running the GPS constellation must account for both gravitational time dilation and special relativistic velocity dilation. Their atomic clocks tick faster than ground clocks by approximately 38 microseconds per day. Without relativistic corrections, your phone’s GPS location would drift by kilometers within a single day.
-            </p>
-
-            <h2 class="text-2xl font-bold text-white pt-4">Gravitational Waves & Wormholes</h2>
-            <p>
-                Spacetime can also vibrate! When two black holes or neutron stars inspiral and merge, they radiate gravitational waves—ripples propagating across the cosmos at the speed of light. First detected by LIGO in 2015, these gravitational vibrations offer a new way to observe the universe.
+                Can spacetime itself vibrate? Yes. In general relativity, accelerating quadrupolar masses generate propagating metric perturbations—ripples in spacetime that travel across the cosmos at the exact speed of light.
             </p>
 
             <p>
-                Einstein’s field equations also admit solutions known as Einstein–Rosen bridges or wormholes: hypothetical topological tunnels connecting distant spacetime points. While wormhole stability requires exotic negative-energy matter, they remain one of the most intriguing theoretical predictions of general relativity.
+                When two coalescing black holes or neutron stars inspiral and merge, the event terminates in a phase called <strong>ringdown</strong>. During ringdown, the newly formed single horizon settles into a stationary Kerr black hole, radiating colossal quantities of energy as gravitational waves.
             </p>
 
-            <p class="border-t border-white/10 pt-6 italic text-gray-400">
-                For over a century, general relativity has taken us on an extraordinary journey through the universe’s deepest secrets. Every discovery has not been the end of the story, but the beginning of a new chapter that opens up deeper questions.
+            <!-- Figure: Gravitational waves GIF -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="assets/uploads/2025/09/U2J9ZM0.gif" 
+                     alt="Simulation of gravitational waves" 
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-2xl">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 5: Numerical relativity simulation of quadrupole gravitational wave emission during binary black hole coalescence.
+                </figcaption>
+            </figure>
+
+            <p>
+                In September 2015, the Laser Interferometer Gravitational-Wave Observatory (LIGO) achieved humankind’s first direct observation of gravitational waves (event <strong>GW150914</strong>). Emitted by two stellar-mass black holes ($36M_\odot$ and $29M_\odot$) merging $1.3\text{ billion}$ light-years away, the waves stretched and squeezed LIGO’s $4\text{-kilometer}$ laser arms by less than one-ten-thousandth the diameter of a proton ($h \sim 10^{-21}$).
+            </p>
+
+            <!-- Figure: LIGO measurement -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="assets/uploads/2025/09/LIGO_measurement_of_gravitational_waves.svg_.png" 
+                     alt="First detection of gravitational waves" 
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 6: LIGO strain measurements at Hanford and Livingston alongside numerical relativity general relativistic wave models and time-frequency spectrograms.
+                </figcaption>
+            </figure>
+
+            <!-- Section 4: Wormholes -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Wormholes (Einstein–Rosen Bridges)</h2>
+
+            <p>
+                Just as Einstein’s field equations admit gravitational lenses and gravitational wave solutions, they also yield speculative topological structures known as <strong>Einstein–Rosen bridges</strong> or wormholes.
+            </p>
+
+            <!-- Figure: Wormhole shape -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="assets/uploads/2025/09/wormholes.jpg" 
+                     alt="Theoretical shape of a wormhole" 
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 7: Embedding diagram of an Einstein–Rosen bridge connecting two asymptotically flat spacetime regions through an open throat.
+                </figcaption>
+            </figure>
+
+            <p>
+                Mathematically, a wormhole consists of two distinct asymptotic "mouths" connected by a spatial "throat". Passing through one mouth could theoretically allow instant traversal across cosmological distances. However, standard general relativity proves that without exotic matter possessing <strong>negative energy density</strong> (violating the Null Energy Condition), any classical wormhole throat pinches shut faster than light can traverse it, forming singularities.
+            </p>
+
+            <p>
+                While macroscopic traversable wormholes remain theoretical conjectures, their mathematical study continues to stimulate research at the intersection of general relativity, quantum entanglement (the $ER = EPR$ conjecture), and quantum gravity.
+            </p>
+
+            <!-- Section 5: Conclusions -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Conclusions</h2>
+
+            <p>
+                For over a century, Albert Einstein’s general theory of relativity has guided our understanding of the universe’s most profound mechanisms. From the deflection of starlight near the Sun and time dilation enabling global satellite navigation, to the cosmic symphonies of gravitational waves detected on Earth, geometry and physical reality remain inextricably linked.
+            </p>
+
+            <p class="border-t border-white/10 pt-6 text-gray-400 italic">
+                In Einstein’s universe, space is not an empty stage, and time is not an immutable clock; together, they form a dynamic, vibrating fabric. Every discovery is not the end of the inquiry, but an invitation to look deeper into the cosmos.
             </p>
         </article>
 
-        <!-- Back to Magazine -->
-        <div class="mt-12 pt-8 border-t border-white/10 flex justify-between items-center">
-            <a href="magazine.html" class="text-sm font-semibold text-[#528bf2] hover:text-[#6ba3ff] transition-colors">
-                &larr; Back to Magazine
+        <!-- Article Navigation Footer -->
+        <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="magazine.html" class="inline-flex items-center gap-2 text-sm font-semibold text-[#528bf2] hover:text-[#6ba3ff] transition-colors">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                <span>Back to Magazine</span>
             </a>
-            <a href="the-hidden-orchestra-of-sound-vibrations-and-waves.html" class="text-sm font-semibold text-[#528bf2] hover:text-[#6ba3ff] transition-colors">
-                Next Article: Sound & Vibrations &rarr;
+            <a href="the-hidden-orchestra-of-sound-vibrations-and-waves.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-[#0042bf] to-[#0066ff] hover:from-[#0066ff] hover:to-[#0042bf] transition-all shadow-md">
+                <span>Next Article: Sound & Waves</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
         </div>
     </div>
 </main>
 
+<!-- Footer -->
 <footer class="bg-gradient-to-b from-[#121116] to-[#0a0a0f] border-t border-white/10 mt-auto">
     <div class="max-w-[1300px] mx-auto px-6 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -332,7 +574,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="competition.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                        <a href="https://iphr.octphysicsclub.org/" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
                             Competition (IPhR)
                         </a>
                     </li>
@@ -343,34 +585,34 @@
                     </li>
                     <li>
                         <a href="publications.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
-                            Publications
+                            Publications Archive
                         </a>
                     </li>
                 </ul>
             </div>
 
-            <!-- Contact & Socials -->
+            <!-- Connect -->
             <div>
-                <h3 class="text-white font-semibold mb-4 text-base tracking-wide">Contact</h3>
+                <h3 class="text-white font-semibold mb-4 text-base tracking-wide">Connect</h3>
                 <ul class="space-y-2.5">
-                    <li class="text-gray-400 text-sm">
-                        <a href="mailto:octphysicsclub@gmail.com" class="hover:text-[#528bf2] transition-colors flex items-center gap-2">
-                            <span>octphysicsclub@gmail.com</span>
+                    <li>
+                        <a href="https://www.facebook.com/STEM.Oct.Physics" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Facebook Page</span>
                         </a>
                     </li>
-                    <li class="text-gray-400 text-sm">
-                        <a href="https://www.facebook.com/STEM.Oct.Physics" target="_blank" rel="noopener noreferrer" class="hover:text-[#528bf2] transition-colors">
-                            Facebook Page
+                    <li>
+                        <a href="https://www.facebook.com/groups/stem.oct.physics" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Facebook Group</span>
                         </a>
                     </li>
-                    <li class="text-gray-400 text-sm">
-                        <a href="https://www.instagram.com/octphysicsclub" target="_blank" rel="noopener noreferrer" class="hover:text-[#528bf2] transition-colors">
-                            Instagram Profile
+                    <li>
+                        <a href="https://www.linkedin.com/company/stem-october-physics-club/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>LinkedIn</span>
                         </a>
                     </li>
-                    <li class="text-gray-400 text-sm">
-                        <a href="https://www.linkedin.com/company/octphysicsclub" target="_blank" rel="noopener noreferrer" class="hover:text-[#528bf2] transition-colors">
-                            LinkedIn Network
+                    <li>
+                        <a href="mailto:stem.oct.physics@gmail.com" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Email Us</span>
                         </a>
                     </li>
                 </ul>
@@ -387,7 +629,7 @@
                     <a href="about.html" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
                         About
                     </a>
-                    <a href="competition.html" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
+                    <a href="https://iphr.octphysicsclub.org/" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
                         IPhR Competition
                     </a>
                 </div>
@@ -396,43 +638,5 @@
     </div>
 </footer>
 
-<!-- Reusable Counter Animation Script -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const counters = document.querySelectorAll(".animate-counter");
-        if (!counters.length) return;
-
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = parseInt(el.getAttribute("data-target"), 10);
-                    if (isNaN(target)) return;
-
-                    const duration = 1800;
-                    let startTime = null;
-
-                    function animate(currentTime) {
-                        if (!startTime) startTime = currentTime;
-                        const progress = Math.min((currentTime - startTime) / duration, 1);
-                        const easeOut = 1 - Math.pow(1 - progress, 3);
-                        const currentVal = Math.floor(easeOut * target);
-                        el.textContent = currentVal.toLocaleString();
-
-                        if (progress < 1) {
-                            requestAnimationFrame(animate);
-                        } else {
-                            el.textContent = target.toLocaleString();
-                        }
-                    }
-                    requestAnimationFrame(animate);
-                    obs.unobserve(el);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        counters.forEach(counter => observer.observe(counter));
-    });
-</script>
 </body>
 </html>
