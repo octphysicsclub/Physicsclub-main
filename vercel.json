@@ -1,0 +1,293 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/ambassador-program.html",
+      "destination": "/ambassador-program",
+      "permanent": true
+    },
+    {
+      "source": "/compass.html",
+      "destination": "/compass",
+      "permanent": true
+    },
+    {
+      "source": "/competition.html",
+      "destination": "/iphr",
+      "permanent": true
+    },
+    {
+      "source": "/competition-2023-results.html",
+      "destination": "/iphr/results/2023",
+      "permanent": true
+    },
+    {
+      "source": "/competition-2024-results.html",
+      "destination": "/iphr/results/2024",
+      "permanent": true
+    },
+    {
+      "source": "/competition-archive.html",
+      "destination": "/iphr/archive",
+      "permanent": true
+    },
+    {
+      "source": "/competition-iphr-rules.html",
+      "destination": "/iphr/rules",
+      "permanent": true
+    },
+    {
+      "source": "/competition-iphr-syllabus.html",
+      "destination": "/iphr/syllabus",
+      "permanent": true
+    },
+    {
+      "source": "/donations.html",
+      "destination": "/donate",
+      "permanent": true
+    },
+    {
+      "source": "/links.html",
+      "destination": "/links",
+      "permanent": true
+    },
+    {
+      "source": "/magazine.html",
+      "destination": "/magazine",
+      "permanent": true
+    },
+    {
+      "source": "/partners.html",
+      "destination": "/partners",
+      "permanent": true
+    },
+    {
+      "source": "/publications.html",
+      "destination": "/publications",
+      "permanent": true
+    },
+    {
+      "source": "/the-long-death-of-a-shadow.html",
+      "destination": "/articles/black-hole",
+      "permanent": true
+    },
+    {
+      "source": "/the-invisible-threads-weaving-time-space-and-destiny.html",
+      "destination": "/articles/spacetime",
+      "permanent": true
+    },
+    {
+      "source": "/the-hidden-orchestra-of-sound-vibrations-and-waves.html",
+      "destination": "/articles/sound-waves",
+      "permanent": true
+    },
+    {
+      "source": "/ypwc-01-entropy.html",
+      "destination": "/articles/ypwc/rank-01-entropy",
+      "permanent": true
+    },
+    {
+      "source": "/ypwc-02-non-newtonian-fluids.html",
+      "destination": "/articles/ypwc/rank-02-non-newtonian-fluids",
+      "permanent": true
+    },
+    {
+      "source": "/ypwc-03-gps-relativity.html",
+      "destination": "/articles/ypwc/rank-03-gps-relativity",
+      "permanent": true
+    },
+    {
+      "source": "/ypwc-04-microwave-physics.html",
+      "destination": "/articles/ypwc/rank-04-microwave-physics",
+      "permanent": true
+    },
+    {
+      "source": "/ypwc-05-sound-to-electricity.html",
+      "destination": "/articles/ypwc/rank-05-sound-to-electricity",
+      "permanent": true
+    },
+    {
+      "source": "/pages/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/pages/ambassador-program.html",
+      "destination": "/ambassador-program",
+      "permanent": true
+    },
+    {
+      "source": "/pages/compass.html",
+      "destination": "/compass",
+      "permanent": true
+    },
+    {
+      "source": "/pages/donate.html",
+      "destination": "/donate",
+      "permanent": true
+    },
+    {
+      "source": "/pages/donate.html",
+      "destination": "/donations",
+      "permanent": true
+    },
+    {
+      "source": "/pages/links.html",
+      "destination": "/links",
+      "permanent": true
+    },
+    {
+      "source": "/pages/magazine.html",
+      "destination": "/magazine",
+      "permanent": true
+    },
+    {
+      "source": "/pages/partners.html",
+      "destination": "/partners",
+      "permanent": true
+    },
+    {
+      "source": "/pages/publications.html",
+      "destination": "/publications",
+      "permanent": true
+    },
+    {
+      "source": "/pages/iphr.html",
+      "destination": "/iphr",
+      "permanent": true
+    },
+    {
+      "source": "/pages/iphr/archive.html",
+      "destination": "/iphr/archive",
+      "permanent": true
+    },
+    {
+      "source": "/pages/iphr/rules.html",
+      "destination": "/iphr/rules",
+      "permanent": true
+    },
+    {
+      "source": "/pages/iphr/syllabus.html",
+      "destination": "/iphr/syllabus",
+      "permanent": true
+    },
+    {
+      "source": "/pages/iphr/results/2023.html",
+      "destination": "/iphr/results/2023",
+      "permanent": true
+    },
+    {
+      "source": "/pages/iphr/results/2024.html",
+      "destination": "/iphr/results/2024",
+      "permanent": true
+    },
+    {
+      "source": "/articles/black-hole.html",
+      "destination": "/articles/black-hole",
+      "permanent": true
+    },
+    {
+      "source": "/articles/spacetime.html",
+      "destination": "/articles/spacetime",
+      "permanent": true
+    },
+    {
+      "source": "/articles/sound-waves.html",
+      "destination": "/articles/sound-waves",
+      "permanent": true
+    },
+    {
+      "source": "/articles/ypwc/rank-01-entropy.html",
+      "destination": "/articles/ypwc/rank-01-entropy",
+      "permanent": true
+    },
+    {
+      "source": "/articles/ypwc/rank-02-non-newtonian-fluids.html",
+      "destination": "/articles/ypwc/rank-02-non-newtonian-fluids",
+      "permanent": true
+    },
+    {
+      "source": "/articles/ypwc/rank-03-gps-relativity.html",
+      "destination": "/articles/ypwc/rank-03-gps-relativity",
+      "permanent": true
+    },
+    {
+      "source": "/articles/ypwc/rank-04-microwave-physics.html",
+      "destination": "/articles/ypwc/rank-04-microwave-physics",
+      "permanent": true
+    },
+    {
+      "source": "/articles/ypwc/rank-05-sound-to-electricity.html",
+      "destination": "/articles/ypwc/rank-05-sound-to-electricity",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/pages/about"
+    },
+    {
+      "source": "/ambassador-program",
+      "destination": "/pages/ambassador-program"
+    },
+    {
+      "source": "/compass",
+      "destination": "/pages/compass"
+    },
+    {
+      "source": "/donate",
+      "destination": "/pages/donate"
+    },
+    {
+      "source": "/donations",
+      "destination": "/pages/donate"
+    },
+    {
+      "source": "/links",
+      "destination": "/pages/links"
+    },
+    {
+      "source": "/magazine",
+      "destination": "/pages/magazine"
+    },
+    {
+      "source": "/partners",
+      "destination": "/pages/partners"
+    },
+    {
+      "source": "/publications",
+      "destination": "/pages/publications"
+    },
+    {
+      "source": "/iphr",
+      "destination": "/pages/iphr"
+    },
+    {
+      "source": "/iphr/archive",
+      "destination": "/pages/iphr/archive"
+    },
+    {
+      "source": "/iphr/rules",
+      "destination": "/pages/iphr/rules"
+    },
+    {
+      "source": "/iphr/syllabus",
+      "destination": "/pages/iphr/syllabus"
+    },
+    {
+      "source": "/iphr/results/2023",
+      "destination": "/pages/iphr/results/2023"
+    },
+    {
+      "source": "/iphr/results/2024",
+      "destination": "/pages/iphr/results/2024"
+    }
+  ]
+}

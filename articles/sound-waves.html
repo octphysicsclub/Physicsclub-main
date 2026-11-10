@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hidden Orchestra of Sound: Vibrations and Waves  |  STEM October Physics Club</title>
+    <meta name="description" content="A comprehensive physical and quantitative analysis of acoustics: longitudinal wave mechanics, partial differential pressure equations, 120 dB pain thresholds, and computational Python wave simulation.">
+    <link rel="icon" href="/assets/uploads/2023/07/cropped-Icon-150x150.png" sizes="32x32" type="image/png">
+
+    <!-- Google Fonts: Montserrat, Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- KaTeX for High-Quality Mathematical Typesetting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Montserrat', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        iphr: {
+                            bg: '#121116',
+                            card: '#1a1a20',
+                            card2: '#1a1a2e',
+                            cardHover: '#252531',
+                            blue: '#528bf2',
+                            blueDark: '#4380eb',
+                            btnBlue1: '#0042bf',
+                            btnBlue2: '#0066ff',
+                            navFrom: '#030d2af4',
+                            navTo: '#0a1a4df4',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #121116;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* KaTeX Equation Card Styling */
+        .katex-display {
+            margin: 1.5rem 0 !important;
+            padding: 1.25rem 1.5rem !important;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, rgba(18, 17, 22, 0.7) 100%) !important;
+            border: 1px solid rgba(168, 85, 247, 0.2) !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5) !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .katex-display:hover {
+            border-color: rgba(168, 85, 247, 0.4) !important;
+            box-shadow: 0 12px 30px -6px rgba(168, 85, 247, 0.15) !important;
+        }
+
+        .katex {
+            font-size: 1.15em !important;
+            color: #f1f5f9;
+        }
+
+        /* Lead Paragraph */
+        .lead-paragraph {
+            font-size: 1.18rem;
+            line-height: 1.85;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        /* Section Styling */
+        .article-section h2 {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .article-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3.5rem;
+            height: 3px;
+            background: linear-gradient(90deg, #a855f7, #528bf2);
+            border-radius: 2px;
+        }
+
+        /* Code Block Styling */
+        .code-container {
+            background-color: #0d1117;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.875rem;
+            overflow: hidden;
+            box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6);
+        }
+
+        .code-header {
+            background-color: #161b22;
+            padding: 0.75rem 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        pre code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.88rem;
+            line-height: 1.65;
+            tab-size: 4;
+        }
+    </style>
+<style>
+    .magazine-atmosphere{position:fixed;inset:0;z-index:0;pointer-events:none;background:url('/assets/magazine/spacetime-grid.svg') center 42%/min(1600px,100vw) auto no-repeat;opacity:.16}
+    .journal-page,.publication-page{position:relative;background:#121116;color:#ededed}
+    .journal-shell,.publication-shell{position:relative;z-index:1;width:min(100% - 48px,1120px);margin:0 auto;padding:132px 0 96px}
+    .journal-intro,.publication-intro{max-width:830px;padding:12px 0 34px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:38px}
+    .journal-kicker,.publication-kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#80aef7;font-weight:700;margin-bottom:14px}
+    .journal-intro h1,.publication-intro h1{font-size:clamp(2.35rem,5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.045em;color:#fff;margin:0 0 15px}
+    .journal-intro p,.publication-intro p{max-width:680px;color:#c1c4cc;font-size:1.05rem;line-height:1.7;margin:0}
+    .journal-section-heading,.publication-section-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;padding:0 0 13px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:24px}
+    .journal-section-heading h2,.publication-section-heading h2{font-size:1.45rem;font-weight:650;color:#fff;margin:0}
+    .journal-section-heading a,.publication-section-heading span{font-size:.84rem;color:#8db3f7}
+    .journal-list{display:grid;gap:34px}
+    .journal-story{overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#101c36}
+    .journal-cover-link{display:block;overflow:hidden;background:#090c13;line-height:0}
+    .journal-cover-link img{display:block;width:100%;height:clamp(245px,31vw,390px);object-fit:cover;object-position:center 52%;transition:transform .45s ease}
+    .journal-story:hover .journal-cover-link img{transform:scale(1.018)}
+    .journal-story-copy{padding:25px clamp(22px,4vw,38px) 29px;border-top:3px solid #528bf2;background:#101c36}
+    .journal-story-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;color:#aab4c8;font-size:.8rem;margin-bottom:12px}
+    .journal-story-meta span{color:#88b2ff;font-weight:650}
+    .journal-story-copy h3{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.2;letter-spacing:-.025em;color:#fff;margin:0 0 11px}
+    .journal-story-copy h3 a{color:inherit;text-decoration:none}
+    .journal-story-copy h3 a:hover{color:#b6d1ff}
+    .journal-story-copy p{max-width:820px;color:#c7ccd6;font-size:.98rem;line-height:1.7;margin:0}
+    .journal-read-link{display:inline-block;margin-top:19px;padding-bottom:4px;border-bottom:1px solid #80aef7;color:#dce8ff;font-size:.9rem;font-weight:650;text-decoration:none}
+    .journal-read-link:hover{color:#8db3f7}
+    .journal-newsletter{margin:54px 0 0;padding:25px 0 0;border-top:1px solid rgba(255,255,255,.14)}
+    .journal-newsletter h2{font-size:1.2rem;color:#fff;margin:0 0 6px}
+    .journal-newsletter p{max-width:650px;color:#b8bbc4;font-size:.9rem;line-height:1.65;margin:0 0 16px}
+    .journal-newsletter form{display:flex;gap:10px;max-width:620px}
+    .journal-newsletter input{min-width:0;flex:1;padding:11px 13px;background:#191a21;border:1px solid #444752;color:#fff}
+    .journal-newsletter button{padding:11px 17px;background:#244f9e;border:1px solid #528bf2;color:#fff;font-weight:650;cursor:pointer}
+    .publication-section{margin-bottom:54px}
+    .publication-list{border-top:1px solid rgba(255,255,255,.15)}
+    .publication-row{display:grid;grid-template-columns:clamp(112px,16vw,168px) minmax(0,1fr);gap:clamp(20px,3.6vw,40px);padding:25px 0;border-bottom:1px solid rgba(255,255,255,.15);align-items:start}
+    .publication-cover{display:block;background:#080b12;line-height:0;box-shadow:8px 8px 0 rgba(0,0,0,.34)}
+    .publication-cover img{display:block;width:100%;aspect-ratio: .72 / 1;object-fit:cover}
+    .publication-row-meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;color:#adb2bd;font-size:.78rem;margin:1px 0 10px}
+    .publication-row-meta span:first-child{color:#8db3f7;font-weight:700}
+    .publication-row h3{font-size:clamp(1.22rem,2.4vw,1.75rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:#fff;margin:0 0 8px}
+    .publication-row h3 a{color:inherit;text-decoration:none}
+    .publication-row h3 a:hover{color:#a9c9ff}
+    .publication-byline{font-size:.87rem;color:#c8cbd3;margin:0 0 11px}
+    .publication-description{font-size:.91rem;line-height:1.62;color:#b8bbc4;margin:0 0 12px;max-width:820px}
+    .publication-row-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:13px}
+    .publication-doi{font-family:ui-monospace,Consolas,monospace;font-size:.75rem;color:#9ebfff;text-decoration:none}
+    .publication-open{font-size:.85rem;font-weight:650;color:#fff;text-decoration:none;border-bottom:1px solid #80aef7;padding-bottom:3px}
+    .publication-details{margin-top:12px;color:#c5c8d0;font-size:.82rem}
+    .publication-details summary{width:max-content;max-width:100%;cursor:pointer;color:#aebedf}
+    .publication-details summary:hover{color:#fff}
+    .publication-details-content{padding:10px 0 0;line-height:1.6}
+    .publication-details-content p{margin:4px 0}
+    .publication-articles{list-style:none;padding:0;margin:0;border-top:1px solid rgba(255,255,255,.13)}
+    .publication-articles li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:center;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.13)}
+    .publication-article-category{display:block;color:#8db3f7;font-size:.75rem;margin-bottom:4px}
+    .publication-articles h3{font-size:1rem;margin:0;color:#fff}
+    .publication-articles h3 a{color:inherit;text-decoration:none}
+    .publication-articles h3 a:hover{color:#a9c9ff}
+    .publication-articles .journal-index-link{font-size:.82rem;color:#b9d0fa;text-decoration:none}
+    .journal-featured-image{margin:0 0 30px;overflow:hidden;background:#080b12;border:1px solid rgba(255,255,255,.12)}
+    .journal-featured-image img{display:block;width:100%;max-height:420px;aspect-ratio:2.15 / 1;object-fit:cover;object-position:center 52%}
+    .journal-featured-image figcaption{padding:9px 13px;color:#aab4c8;font-size:.75rem;border-top:1px solid rgba(255,255,255,.12)}
+    .journal-article-shell{position:relative;z-index:1}
+    .journal-article-shell h1{letter-spacing:-.035em}
+    :focus-visible{outline:2px solid #a9c9ff;outline-offset:4px}
+    @media(max-width:640px){
+      .journal-shell,.publication-shell{width:min(100% - 32px,1120px);padding-top:118px;padding-bottom:68px}
+      .journal-intro,.publication-intro{padding-bottom:26px;margin-bottom:29px}
+      .journal-section-heading,.publication-section-heading{align-items:start;flex-direction:column;gap:7px}
+      .journal-cover-link img{height:250px}
+      .journal-story-copy{padding:19px 18px 23px}
+      .journal-story-meta{flex-direction:column;align-items:start;gap:5px}
+      .journal-newsletter form{flex-direction:column}
+      .publication-row{grid-template-columns:96px minmax(0,1fr);gap:17px;padding:20px 0}
+      .publication-cover{box-shadow:5px 5px 0 rgba(0,0,0,.34)}
+      .publication-articles li{grid-template-columns:minmax(0,1fr);gap:7px}
+    }
+    @media(prefers-reduced-motion:reduce){.journal-cover-link img{transition:none}.journal-story:hover .journal-cover-link img{transform:none}}
+</style>
+<style>
+    .journal-list{max-width:980px;gap:17px}
+    .journal-story{display:grid;grid-template-columns:clamp(190px,25vw,270px) minmax(0,1fr);align-items:stretch;background:#090a0d;border-color:#242730;transition:border-color .2s ease}
+    .journal-story:hover{border-color:#35445f}
+    .journal-cover-link{min-height:180px;height:100%;background:#06070a}
+    .journal-cover-link img{height:100%;min-height:180px;max-height:230px;object-fit:cover;object-position:center 52%;transition:transform .3s ease}
+    .journal-story-copy{padding:18px 22px 19px;border-top:0;border-left:2px solid #304c7d;background:#090a0d}
+    .journal-story-meta{margin-bottom:8px;font-size:.74rem}
+    .journal-story-copy h3{font-size:clamp(1.15rem,1.7vw,1.45rem);margin-bottom:8px}
+    .journal-story-copy p{font-size:.88rem;line-height:1.58}
+    .journal-read-link{margin-top:12px;font-size:.84rem}
+    .reader-page{position:relative;isolation:isolate;flex:1 0 auto;width:100%;height:100svh;min-height:580px;overflow:hidden;background:#08090c}
+    .reader-backdrop{position:absolute;inset:0 0 auto;height:74vh;overflow:hidden;background:#06070a}
+    .reader-backdrop img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 48%}
+    .reader-backdrop::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,9,.24) 0%,rgba(5,6,9,.08) 38%,#0c0e12 100%)}
+    .reader-sheet{position:absolute;z-index:2;left:50%;bottom:0;display:flex;flex-direction:column;width:min(calc(100% - 40px),1080px);height:78vh;max-height:900px;min-height:min(430px,70svh);transform:translateX(-50%) translateY(var(--reader-offset,0px));overflow:hidden;background:#0c0e12;border:1px solid #292c33;border-top:2px solid #365a91;box-shadow:0 -18px 54px rgba(0,0,0,.38);transition:transform .24s ease}
+    .reader-sheet.is-dragging{transition:none;user-select:none}
+    .reader-drag-handle{position:relative;flex:0 0 38px;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;border-bottom:1px solid #252831;background:#101217;color:#858b97;cursor:grab;touch-action:none;font:500 .7rem/1.2 Inter,Arial,sans-serif}
+    .reader-drag-handle:active{cursor:grabbing}
+    .reader-grab-mark{display:block;width:36px;height:3px;border-radius:3px;background:#707783}
+    .reader-drag-handle span:last-child{position:absolute;right:16px}
+    .reader-scroll-region{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-color:#444b58 #0c0e12}
+    .reader-content{padding-top:26px!important;padding-bottom:64px!important}
+    .reader-content .article-section{max-width:800px;margin:30px auto 0;color:#c8cbd2}
+    .reader-content .article-section h2{color:#f2f3f5}
+    .reader-content .article-section figure{background:#111318;border:1px solid #292d35}
+    .reader-content .article-section figcaption{color:#9ea3ac}
+    .reader-content .article-section img{max-height:560px;object-fit:contain}
+    .reader-content .article-section table{color:#d3d5db}
+    @media(max-width:640px){
+      .journal-list{gap:14px}
+      .journal-story{grid-template-columns:1fr}
+      .journal-cover-link{height:178px;min-height:0}
+      .journal-cover-link img{height:178px;min-height:0}
+      .journal-story-copy{padding:16px 17px 18px;border-left:0;border-top:2px solid #304c7d}
+      .reader-page{height:100svh;min-height:540px}
+      .reader-backdrop{height:67svh}
+      .reader-backdrop img{object-position:center 45%}
+      .reader-sheet{width:calc(100% - 12px);height:77svh;min-height:68svh}
+      .reader-drag-handle{flex-basis:42px}
+      .reader-drag-handle span:last-child{right:12px;font-size:.62rem}
+      .reader-content{padding-top:22px!important;padding-bottom:52px!important}
+    }
+    @media(prefers-reduced-motion:reduce){.journal-story,.journal-cover-link img,.reader-sheet{transition:none}}
+</style>
+
+
+
+
+<style>
+.reader-page{position:relative!important;isolation:isolate;width:100%;height:auto!important;min-height:100vh!important;overflow:visible!important;flex:1 0 auto;background:#08090c!important;padding-bottom:1px}.reader-backdrop{position:fixed!important;inset:0!important;height:100vh!important;z-index:-1;background:#06070a}.reader-backdrop img{object-fit:cover!important;object-position:center 48%!important}.reader-backdrop::after{background:linear-gradient(180deg,rgba(5,6,9,.12) 0%,rgba(5,6,9,.08) 34%,rgba(8,10,14,.72) 74%,#080a0e 100%)!important}.reader-page::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url('/assets/magazine/spacetime-grid.svg') center 34%/min(1500px,100vw) auto no-repeat;opacity:.36;mix-blend-mode:screen}.reader-sheet{position:relative!important;z-index:2;left:auto!important;bottom:auto!important;display:block!important;width:min(calc(100% - 40px),980px)!important;height:auto!important;max-height:none!important;min-height:0!important;overflow:visible!important;margin:59vh auto 48px!important;transform:none!important;background:rgba(12,14,19,.975)!important;border:1px solid #30343d!important;border-top:2px solid #45658b!important;box-shadow:0 -22px 66px rgba(0,0,0,.48)!important;transition:margin-top .52s cubic-bezier(.2,.75,.25,1)!important}.reader-page.is-raised .reader-sheet{margin-top:26vh!important}.reader-drag-handle{display:none!important}.reader-scroll-region{display:block!important;overflow:visible!important;min-height:0!important;overscroll-behavior:auto!important}.reader-content{padding-top:clamp(25px,4vw,42px)!important;padding-bottom:64px!important}.reader-content .article-section{max-width:800px;margin:30px auto 0;color:#c8cbd2}.reader-content .article-section figure{display:flex;flex-direction:column;align-items:center;width:100%;max-width:100%;margin:1.6rem auto;background:#111318;border:1px solid #292d35;padding:12px}.reader-content .article-section figure img{display:block;width:auto;height:auto;max-width:min(100%,520px);max-height:340px;object-fit:contain;margin:0 auto}.reader-content .article-section figcaption{max-width:600px;margin:.65rem auto 0;text-align:center;color:#9ea3ac}.reader-content .article-section .figpair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;max-width:700px;margin:1.5rem auto}.reader-content .article-section .figpair figure{margin:0}.reader-content .article-section .figpair img{max-width:100%;max-height:250px}.reader-content .article-section table{color:#d3d5db}@media(max-width:640px){.reader-sheet{width:calc(100% - 14px)!important;margin-top:53vh!important;padding:0!important}.reader-page.is-raised .reader-sheet{margin-top:24vh!important}.reader-content{padding-top:24px!important;padding-bottom:48px!important}.reader-content .article-section figure img{max-width:min(100%,430px);max-height:285px}.reader-content .article-section .figpair{grid-template-columns:1fr}}
+</style>
+    <link rel="stylesheet" href="/assets/site-motion.css">
+</head>
+<body class="bg-[#121116] text-[#e2e8f0] min-h-screen flex flex-col selection:bg-purple-600 selection:text-white antialiased">
+
+<!-- Header Navigation -->
+<header class="fixed top-0 w-full bg-gradient-to-r from-[#030d2af4] to-[#0a1a4df4] shadow-lg py-4 z-[100] transition-all duration-300 select-none">
+    <div class="max-w-[1300px] mx-auto flex items-center justify-between w-full px-4 sm:px-6">
+
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="/" class="inline-block focus:outline-none">
+                <img src="/assets/uploads/2023/07/Logo-1.png"
+                     alt="STEM October Physics Club"
+                     class="hover:scale-105 transition-transform duration-200 w-[190px] sm:w-[220px] h-auto object-contain">
+            </a>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="site-desktop-nav hidden xl:flex items-center gap-6">
+            <ul class="site-nav-list flex items-center gap-6">
+                <li>
+                    <a href="/"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages/about.html"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages/partners.html"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Partners
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://iphr.octphysicsclub.org/"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        IPhR
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages/donate.html"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Donations
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages/compass.html"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        COMPASS
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li><a href="https://ypwc.octphysicsclub.org/" target="_blank" rel="noopener noreferrer" class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">YPWC<span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span></a></li>
+                <li>
+                    <a href="/pages/magazine.html" class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Magazine
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li class="site-nav-cta">
+                    <a href="/pages/publications.html"
+                       class="bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white px-6 py-2.5 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg hover:shadow-xl inline-block">
+                        Publications
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Tablet / Mobile Hamburger Button -->
+        <div class="flex xl:hidden items-center">
+            <button id="mobile-menu-toggle"
+                    type="button"
+                    class="p-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#528bf2]"
+                    aria-label="Toggle menu"
+                    aria-expanded="false">
+                <svg id="hamburger-icon" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-drawer" class="hidden xl:hidden border-t border-white/10 bg-[#030d2af4] px-6 py-4 transition-all duration-300">
+        <ul class="flex flex-col gap-3">
+            <li>
+                <a href="/" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/pages/about.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="/pages/partners.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Partners
+                </a>
+            </li>
+            <li>
+                <a href="https://iphr.octphysicsclub.org/" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    IPhR
+                </a>
+            </li>
+            <li>
+                <a href="/pages/donate.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Donations
+                </a>
+            </li>
+            <li>
+                <a href="/pages/compass.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    COMPASS
+                </a>
+            </li>
+            <li>
+                <a href="https://ypwc.octphysicsclub.org/" target="_blank" rel="noopener noreferrer" class="block py-2 text-lg font-medium text-white hover:text-[#528bf2]">YPWC</a><a href="/pages/magazine.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">Magazine</a>
+            </li>
+            <li class="pt-2">
+                <a href="/pages/publications.html" class="block w-full text-center bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white py-3 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg">
+                    Publications
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<script>
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const navDrawer = document.getElementById('mobile-nav-drawer');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (menuToggle && navDrawer) {
+        menuToggle.addEventListener('click', function() {
+            const isHidden = navDrawer.classList.contains('hidden');
+            if (isHidden) {
+                navDrawer.classList.remove('hidden');
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                navDrawer.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+    }
+</script>
+
+<main class="reader-page">
+<div class="site-transition-ripple" aria-hidden="true"></div>
+    <div class="reader-backdrop" aria-hidden="true"><img src="/assets/magazine/covers/sound-waves.jpg" alt="Headphones and a physics notebook on a wooden desk"></div>
+    <section class="reader-sheet" aria-label="Article reader">
+        <button class="reader-drag-handle" type="button" aria-label="Drag to reveal more of the image or expand the article" aria-controls="article-scroll" aria-valuemin="-18" aria-valuemax="36" aria-valuenow="0"><span class="reader-grab-mark" aria-hidden="true"></span><span>Drag to adjust · Scroll to read</span></button>
+        <div class="reader-scroll-region" id="article-scroll" tabindex="0"><div class="reader-content relative max-w-4xl mx-auto px-6 py-10"><!-- Breadcrumbs & Category Badge -->
+        <div class="mb-6 flex flex-wrap items-center gap-3">
+            <a href="/pages/magazine.html" class="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-purple-400 hover:text-purple-300 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <span>Magazine</span>
+            </a>
+            <span class="text-gray-600">&bull;</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 border border-purple-500/30 text-purple-400">
+                Acoustics & Harmonic Analysis
+            </span>
+        </div>
+
+        <!-- Article Title & Subtitle -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
+            The Hidden Orchestra of Sound: Vibrations and Waves
+        </h1>
+
+        <p class="text-lg text-purple-300 font-medium mb-6 italic">
+            Explore how the gentle hum you hear and the music that moves you are more than just noise; they are the elegant dance of vibrations, forming a hidden orchestra around us.
+        </p>
+
+        <!-- Metadata Bar -->
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400 border-b border-white/10 pb-6 mb-10">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold text-xs">
+                    YM
+                </div>
+                <span>By <strong class="text-white">Yaseen Mohamed-Abdelal</strong></span>
+            </div>
+            <span>&bull;</span>
+            <span>July 20, 2025</span>
+            <span>&bull;</span>
+            <span>10 min read</span>
+            <span>&bull;</span>
+            <span class="text-emerald-400 font-medium">LaTeX Math & Python Code</span>
+        </div><article class="article-section text-gray-300 text-base sm:text-lg leading-relaxed space-y-7">
+
+            <p class="lead-paragraph">
+                It’s a bustling afternoon, and just like any normal day, you notice the world around you is alive with unseen forces. One moment, your phone buzzes with an incoming message, resting silently on the table, yet creating a distinct tremor. As you listen to your favorite song, the bass vibrates through your chest | a tangible presence from an invisible source. Careless as you might be in passing it off as trivial, your body isn’t joking about it: in that instant, your ears and skin were tuned into a symphony of pressure and rarefaction, a delicate ballet of particles that carried information and energy. This is what we call <em>sound</em>.
+            </p>
+
+            <!-- Section 1: Defining Sound -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Defining Sound: How it Occurs and What Induces It</h2>
+
+            <p>
+                Sound, those subtle whispers and powerful roars, may seem magical, but it’s pure classical physics. In physical terms, sound is a mechanical vibration that propagates through an elastic medium as a longitudinal wave. When an object oscillates, it pushes and pulls on surrounding particles (such as ambient air molecules), generating alternating regions of increased local density and pressure (<strong>compressions</strong>) and reduced density and pressure (<strong>rarefactions</strong>).
+            </p>
+
+            <p>
+                These compressions and rarefactions travel outward through the medium, transporting kinetic and potential energy without displacing the net matter permanently. Ancient Greek philosopher Pythagoras was among the first to formalize acoustic relationships, discovering that the tension and length of a vibrating string determined its discrete pitch. The science was later termed <em>acoustics</em>, derived from the Greek root <em>akouein</em>, meaning "to hear."
+            </p>
+
+            <!-- Figure 1: Compressions & Rarefactions -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/07/comprarefaction.png"
+                     alt="Compression and Rarefaction in Sound Waves"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 1: Simplified schematic of a longitudinal acoustic wave: alternating zones of compression (dense vertical lines) and rarefaction (sparse lines) propagating along the axis of travel.
+                </figcaption>
+            </figure>
+
+            <p>
+                The medium is indispensable for mechanical wave propagation. Sound requires particle-to-particle collisions to transmit momentum:
+            </p>
+            <ul class="space-y-2 list-disc list-inside text-gray-300 ml-2">
+                <li><strong>Vacuum of space:</strong> Absolute silence reigns because no particles exist to collide and propagate momentum.</li>
+                <li><strong>Air ($20^\circ\text{C}$):</strong> Acoustic velocity is approximately $v \approx 343\text{ m/s}$.</li>
+                <li><strong>Water:</strong> Being denser and possessing higher bulk modulus, sound propagates over $4\times$ faster at $v \approx 1,480\text{ m/s}$, enabling cetaceans (whales) to communicate across ocean basins.</li>
+                <li><strong>Solids (Steel, Granite):</strong> Dense atomic lattice bonds transmit shear and longitudinal strains exceeding $5,000\text{ m/s}$.</li>
+            </ul>
+
+            <p>
+                Temperature also directly controls propagation velocity. In ideal gases, the speed of sound $v$ scales with absolute thermodynamic temperature $T$:
+            </p>
+
+            $$v = \sqrt{\frac{\gamma R T}{M}}$$
+
+            <p>
+                where $\gamma$ is the adiabatic index (heat capacity ratio, $\gamma \approx 1.4$ for diatomic air), $R$ is the universal gas constant, and $M$ is the molar mass of the gas. Warmer air molecules possess higher root-mean-square thermal velocities, passing momentum impulses more rapidly to neighboring particles.
+            </p>
+
+            <!-- Section 2: How Sound Affects Our Daily Lives -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">How Sound Affects Our Daily Lives</h2>
+
+            <p>
+                Acoustic phenomena govern both artistic expression and everyday engineering. Inside a violin or acoustic guitar, a vibrating string drives the wooden soundboard and internal air cavity into resonance, amplifying weak string vibrations into rich acoustic output. In a symphonic orchestra, hundreds of instruments project harmonic frequencies that undergo constructive and destructive interference, creating a dynamic, multidimensional soundscape.
+            </p>
+
+            <p>
+                The energy scale of sound spans many orders of magnitude:
+            </p>
+            <ul class="space-y-2 list-disc list-inside text-gray-300 ml-2">
+                <li>A human whisper delivers an acoustic power of mere <strong>picowatts ($10^{-12}\text{ W}$)</strong>.</li>
+                <li>Normal human conversational speech operates near <strong>microwatts ($10^{-6}\text{ W}$)</strong>.</li>
+                <li>A roaring turbojet engine radiates over <strong>$100,000\text{ Watts}$</strong> of raw acoustic power.</li>
+            </ul>
+
+            <p>
+                Beyond hearing, engineering applies ultrasound ($f > 20\text{ kHz}$) in diagnostic medical imaging to track cardiovascular blood velocity via Doppler shifts, oceanic sonar to chart submarine trenches, and non-destructive testing (NDT) to detect microscopic fractures inside aircraft titanium wings.
+            </p>
+
+            <!-- Section 3: Quantitative Analysis (Decibels & Pain Threshold) -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">How Many Decibels Can Cause Damage? (Quantitative Analysis)</h2>
+
+            <p>
+                Imagine standing in the front row of a massive rock concert. The subwoofers rumble, rattling the floor and vibrating your sternum. While music at moderate volume is exhilarating, you might wonder: <em>At what exact mathematical threshold does sound cease being thrilling and become physiologically dangerous?</em>
+            </p>
+
+            <p>
+                In audiology, prolonged exposure to <strong>$120\text{ decibels (dB)}$</strong> is recognized as the threshold of pain, capable of inducing immediate acoustic trauma and cochlear hair-cell destruction. Let us solve this from first principles using continuum wave mechanics and calculus.
+            </p>
+
+            <p>
+                Consider a harmonic plane sound wave traveling in the positive $x$-direction. The longitudinal particle displacement $s(x, t)$ from equilibrium is given by:
+            </p>
+
+            $$s(x, t) = s_{\text{max}} \cos(kx - \omega t)$$
+
+            <p>
+                where:
+                <br>&bull; $s_{\text{max}}$ is the maximum particle displacement amplitude.
+                <br>&bull; $k = \frac{2\pi}{\lambda} = \frac{\omega}{v}$ is the spatial wave number.
+                <br>&bull; $\omega = 2\pi f$ is the angular frequency.
+            </p>
+
+            <p>
+                By Newton's second law applied to an incremental fluid element with volume equilibrium bulk modulus $B = \rho v^2$, the local acoustic pressure deviation $\Delta P(x, t)$ is proportional to the negative spatial displacement gradient (rate of strain):
+            </p>
+
+            $$\Delta P(x, t) = -B \frac{\partial s}{\partial x} = -\rho v^2 \frac{\partial s}{\partial x}$$
+
+            <p>
+                Differentiating $s(x, t)$ with respect to position $x$:
+            </p>
+
+            $$\frac{\partial s}{\partial x} = \frac{\partial}{\partial x}\left[s_{\text{max}} \cos(kx - \omega t)\right] = -s_{\text{max}} k \sin(kx - \omega t)$$
+
+            <p>
+                Substituting this derivative back into the acoustic pressure equation:
+            </p>
+
+            $$\Delta P(x, t) = -\rho v^2 \left[-s_{\text{max}} k \sin(kx - \omega t)\right] = \left(\rho v^2 s_{\text{max}} k\right) \sin(kx - \omega t)$$
+
+            <p>
+                Hence, the maximum pressure amplitude $\Delta P_{\text{max}}$ is:
+            </p>
+
+            $$\Delta P_{\text{max}} = \rho v^2 s_{\text{max}} k$$
+
+            <p>
+                Notice the fundamental $90^\circ$ ($\pi/2\text{ rad}$) spatial phase difference: maximum compression ($\Delta P = \pm \Delta P_{\text{max}}$) occurs precisely where particle displacement is zero ($s = 0$).
+            </p>
+
+            <p>
+                The time-averaged acoustic sound intensity $I$ (power per unit area, $\text{W/m}^2$) is:
+            </p>
+
+            $$I = \frac{(\Delta P_{\text{max}})^2}{2\rho v}$$
+
+            <p>
+                where $\rho = 1.225\text{ kg/m}^3$ (density of air at sea level and $20^\circ\text{C}$) and $v = 343\text{ m/s}$.
+            </p>
+
+            <p>
+                The sound level $\beta$ in decibels ($\text{dB}$) is defined logarithmically relative to the reference threshold of human hearing ($I_0 = 10^{-12}\text{ W/m}^2$):
+            </p>
+
+            $$\beta = 10 \log_{10}\left(\frac{I}{I_0}\right)$$
+
+            <p>
+                Setting $\beta = 120\text{ dB}$:
+            </p>
+
+            $$120 = 10 \log_{10}\left(\frac{I}{10^{-12}\text{ W/m}^2}\right) \implies 12 = \log_{10}\left(\frac{I}{10^{-12}}\right)$$
+
+            $$10^{12} = \frac{I}{10^{-12}} \implies I = 10^{12} \times 10^{-12} = 1.0\text{ W/m}^2$$
+
+            <p>
+                Now, we compute the maximum pressure variation $\Delta P_{\text{max}}$ generated by this $1\text{ W/m}^2$ wave:
+            </p>
+
+            $$\Delta P_{\text{max}} = \sqrt{2 \rho v I} = \sqrt{2 \times \left(1.225\text{ kg/m}^3\right) \times \left(343\text{ m/s}\right) \times \left(1.0\text{ W/m}^2\right)}$$
+
+            $$\Delta P_{\text{max}} = \sqrt{840.35}\text{ Pa} \approx 28.98\text{ Pa}$$
+
+            <div class="my-6 p-5 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-sm sm:text-base leading-relaxed">
+                <strong class="text-white">Perspective:</strong> Standard atmospheric pressure is $P_0 = 101,325\text{ Pa}$. A dynamic acoustic ripple of $\pm 28.98\text{ Pa}$ represents a fluctuation of only $0.028\%$ of atmospheric pressure! Yet, striking the delicate human tympanic membrane (eardrum) at hundreds of cycles per second, this pressure oscillation is sufficient to cause acute physical pain.
+            </div>
+
+            <p>
+                Finally, let us calculate the physical particle oscillation amplitude $s_{\text{max}}$ for a standard diagnostic pitch of $f = 1000\text{ Hz}$:
+            </p>
+
+            $$\omega = 2\pi(1000\text{ s}^{-1}) \approx 6283.18\text{ rad/s}, \quad k = \frac{\omega}{v} = \frac{6283.18}{343} \approx 18.32\text{ m}^{-1}$$
+
+            $$s_{\text{max}} = \frac{\Delta P_{\text{max}}}{\rho v^2 k} = \frac{28.98\text{ Pa}}{1.225 \times (343)^2 \times 18.32} \approx 1.1 \times 10^{-5}\text{ m} = 11\ \mu\text{m}$$
+
+            <p>
+                <strong>Remarkable physical insight:</strong> Air molecules are oscillating back and forth by a mere <strong>$11\text{ micrometers}$</strong> | approximately the diameter of a single red blood cell! The human ear is so astonishingly sensitive that a microscopic displacement of $11\ \mu\text{m}$ marks the boundary between hearing and severe physiological pain.
+            </p>
+
+            <!-- Section 4: Computational Analysis -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Computational Analysis: Simulating the Sound Wave</h2>
+
+            <p>
+                Beyond analytical derivations, computational acoustics enables us to visualize wave propagation and numerical phase relationships. Using Python with <code>numpy</code> and <code>matplotlib</code>, we simulate the spatial snapshot of particle displacement and pressure fluctuation across multiple wavelengths.
+            </p>
+
+            <!-- Figure 2: Phase Difference Plot -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/07/hohehe.png"
+                     alt="Displacement vs Pressure Phase Relationship"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-xl">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 2: Theoretical $90^\circ$ phase shift between particle displacement $s(x, t)$ (cosine) and acoustic pressure $\Delta P(x, t)$ (sine). Pressure extrema coincide with displacement nodes.
+                </figcaption>
+            </figure>
+
+            <!-- Python Code Block -->
+            <div class="code-container my-8">
+                <div class="code-header">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                        <span class="text-xs font-mono text-gray-400 ml-2">sound_wave_simulation.py</span>
+                    </div>
+                    <span class="text-xs uppercase tracking-wider font-mono text-purple-400 font-semibold">Python 3</span>
+                </div>
+                <div class="p-4 sm:p-6 overflow-x-auto bg-[#090d16]">
+                    <pre><code class="language-python text-gray-300">import numpy as np
+import matplotlib.pyplot as plt
+
+# --- Physical Constants for Air at Room Temperature (20°C) ---
+rho = 1.225      # kg/m^3 (density of air)
+v = 343.0        # m/s   (speed of sound)
+
+# --- Wave Parameters from Quantitative Calculation ---
+s_max = 1.1e-5     # meters (maximum particle displacement amplitude)
+frequency = 1000   # Hz (acoustic pitch)
+omega = 2 * np.pi * frequency   # Angular frequency (rad/s)
+k = omega / v                   # Wave number (rad/m)
+
+# Peak pressure variation from derived equation: Delta P_max = rho * v^2 * s_max * k
+delta_P_max = rho * (v ** 2) * s_max * k
+
+print(f"Sound Wave Simulation (Threshold of Pain: 120 dB)")
+print(f"Displacement Amplitude (s_max): {s_max:.2e} m (11 micrometers)")
+print(f"Calculated Pressure Amplitude: {delta_P_max:.2f} Pa")
+
+# --- Spatial Domain (Snapshot over 4 full wavelengths) ---
+wavelength = v / frequency
+x_values = np.linspace(0, 4 * wavelength, 1000)
+t_snapshot = 0.0  # Instantaneous snapshot at t = 0
+
+# --- Compute Wave Functions ---
+s_values = s_max * np.cos(k * x_values - omega * t_snapshot)
+delta_P_values = delta_P_max * np.sin(k * x_values - omega * t_snapshot)
+
+# --- Plot Displacement & Pressure Waves ---
+plt.figure(figsize=(12, 7))
+
+plt.subplot(2, 1, 1)
+plt.plot(x_values, s_values * 1e6, color='#528bf2', linewidth=2, label='Particle Displacement s(x, 0)')
+plt.title('Acoustic Wave Snapshot: Particle Displacement vs Position', fontsize=12, fontweight='bold')
+plt.ylabel('Displacement (µm)')
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.legend(loc='upper right')
+
+plt.subplot(2, 1, 2)
+plt.plot(x_values, delta_P_values, color='#ef4444', linewidth=2, label='Pressure Variation ΔP(x, 0)')
+plt.title('Acoustic Wave Snapshot: Pressure Variation vs Position', fontsize=12, fontweight='bold')
+plt.xlabel('Position x (meters)')
+plt.ylabel('Pressure ΔP (Pa)')
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.legend(loc='upper right')
+
+plt.tight_layout()
+plt.show()</code></pre>
+                </div>
+            </div>
+
+            <!-- Figure 3: Python Output Simulation -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/07/download-5.png"
+                     alt="Numerical Simulation Plot Output"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-xl">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 3: Output waveforms generated by the Python simulation demonstrating spatial harmonic profiles of displacement and acoustic pressure.
+                </figcaption>
+            </figure>
+
+            <p>
+                In spherical radiation from a point source, acoustic energy spreads over an area proportional to $4\pi r^2$, causing sound intensity to decay inversely with the square of distance ($I \propto 1/r^2$). On the logarithmic decibel scale, every doubling of distance from a point source reduces the sound level by exactly:
+            </p>
+
+            $$\Delta\beta = 10 \log_{10}\left(\frac{1}{2^2}\right) = -10 \log_{10}(4) \approx -6.02\text{ dB}$$
+
+            <!-- Figure 4: Decibel Decay Plot -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/07/decay.png"
+                     alt="Inverse Square Law Decibel Decay"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-xl">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 4: Acoustic intensity attenuation in decibels as a function of radial distance, reflecting the geometric inverse-square law.
+                </figcaption>
+            </figure>
+
+            <!-- Section 5: Conclusion -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Conclusion</h2>
+
+            <p>
+                Even with the ubiquity of modern acoustic instruments, speech recognition algorithms, ultrasound diagnostics, and computational numerical models, sound remains one of the most elegant branches of classical mechanics. It seamlessly unites thermodynamics, fluid dynamics, calculus, and neurobiology.
+            </p>
+
+            <p class="border-t border-white/10 pt-6 text-gray-400 italic">
+                The next time you listen to a musical chord or feel bass vibrations resonate through a floor, remember the physical choreography underway: trillions of microscopic particles oscillating by mere micrometers, translating mechanical energy into the symphony of the world around us.
+            </p>
+        </article></div></div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gradient-to-b from-[#121116] to-[#0a0a0f] border-t border-white/10 mt-auto">
+    <div class="max-w-[1300px] mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+            <!-- Logo and Description -->
+            <div class="col-span-1 md:col-span-2">
+                <a href="/" class="inline-block mb-4">
+                    <img src="/assets/uploads/2023/07/Logo-1.png"
+                         alt="STEM October Physics Club"
+                         class="w-[200px] h-auto object-contain">
+                </a>
+                <p class="text-gray-400 text-sm max-w-md leading-relaxed">
+                    The Official Physics Club of STEM High School for Boys – 6th of October. Providing collegiate-level physics training, organizing international competitions, and publishing scientific materials for students worldwide.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-white font-semibold mb-4 text-base tracking-wide">Quick Links</h3>
+                <ul class="space-y-2.5">
+                    <li>
+                        <a href="/" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/about.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/partners.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Partners
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iphr.octphysicsclub.org/" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Competition (IPhR)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/compass.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            COMPASS Program
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/publications.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Publications Archive
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connect -->
+            <div>
+                <h3 class="text-white font-semibold mb-4 text-base tracking-wide">Connect</h3>
+                <ul class="space-y-2.5">
+                    <li>
+                        <a href="https://www.facebook.com/STEM.Oct.Physics" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Facebook Page</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/groups/stem.oct.physics" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Facebook Group</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/stem-october-physics-club/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:stem.oct.physics@gmail.com" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Email Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="mt-12 pt-8 border-t border-white/10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">
+                    © 2024 - 2026 STEM October Physics Club. All rights reserved. Powered by STEM High School for Boys  |  6th of October.
+                </p>
+                <div class="flex gap-6">
+                    <a href="/pages/about.html" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
+                        About
+                    </a>
+                    <a href="https://iphr.octphysicsclub.org/" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
+                        IPhR Competition
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="/assets/magazine/reader-sheet.js" defer></script>
+<script defer src="/assets/vendor/gsap/gsap.min.js"></script>
+<script defer src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script defer src="/assets/site-motion.js"></script>
+</body>
+</html>

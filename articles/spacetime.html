@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Invisible Threads: Weaving Time, Space and Destiny  |  STEM October Physics Club</title>
+    <meta name="description" content="Explore how general relativity weaves space and time: gravitational lensing, time dilation near Everest vs sea level, GPS satellite relativistic corrections, gravitational waves, and wormholes.">
+    <link rel="icon" href="/assets/uploads/2023/07/cropped-Icon-150x150.png" sizes="32x32" type="image/png">
+
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- KaTeX for High-Quality Mathematical Typesetting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Montserrat', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        iphr: {
+                            bg: '#121116',
+                            card: '#1a1a20',
+                            card2: '#1a1a2e',
+                            cardHover: '#252531',
+                            blue: '#528bf2',
+                            blueDark: '#4380eb',
+                            btnBlue1: '#0042bf',
+                            btnBlue2: '#0066ff',
+                            navFrom: '#030d2af4',
+                            navTo: '#0a1a4df4',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #121116;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* KaTeX Equation Card Styling */
+        .katex-display {
+            margin: 1.5rem 0 !important;
+            padding: 1.25rem 1.5rem !important;
+            background: linear-gradient(135deg, rgba(82, 139, 242, 0.05) 0%, rgba(18, 17, 22, 0.7) 100%) !important;
+            border: 1px solid rgba(82, 139, 242, 0.2) !important;
+            border-radius: 1rem !important;
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5) !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .katex-display:hover {
+            border-color: rgba(82, 139, 242, 0.4) !important;
+            box-shadow: 0 12px 30px -6px rgba(82, 139, 242, 0.15) !important;
+        }
+
+        .katex {
+            font-size: 1.15em !important;
+            color: #f1f5f9;
+        }
+
+        /* Lead Paragraph */
+        .lead-paragraph {
+            font-size: 1.18rem;
+            line-height: 1.85;
+            color: #cbd5e1;
+            font-weight: 300;
+        }
+
+        /* Section Styling */
+        .article-section h2 {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .article-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3.5rem;
+            height: 3px;
+            background: linear-gradient(90deg, #528bf2, transparent);
+            border-radius: 2px;
+        }
+
+        /* Ambient line background */
+        .ambient-line-bg {
+            background-image: url('/assets/iphr/bg_img_line.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+<style>
+    .magazine-atmosphere{position:fixed;inset:0;z-index:0;pointer-events:none;background:url('/assets/magazine/spacetime-grid.svg') center 42%/min(1600px,100vw) auto no-repeat;opacity:.16}
+    .journal-page,.publication-page{position:relative;background:#121116;color:#ededed}
+    .journal-shell,.publication-shell{position:relative;z-index:1;width:min(100% - 48px,1120px);margin:0 auto;padding:132px 0 96px}
+    .journal-intro,.publication-intro{max-width:830px;padding:12px 0 34px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:38px}
+    .journal-kicker,.publication-kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#80aef7;font-weight:700;margin-bottom:14px}
+    .journal-intro h1,.publication-intro h1{font-size:clamp(2.35rem,5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.045em;color:#fff;margin:0 0 15px}
+    .journal-intro p,.publication-intro p{max-width:680px;color:#c1c4cc;font-size:1.05rem;line-height:1.7;margin:0}
+    .journal-section-heading,.publication-section-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;padding:0 0 13px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:24px}
+    .journal-section-heading h2,.publication-section-heading h2{font-size:1.45rem;font-weight:650;color:#fff;margin:0}
+    .journal-section-heading a,.publication-section-heading span{font-size:.84rem;color:#8db3f7}
+    .journal-list{display:grid;gap:34px}
+    .journal-story{overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#101c36}
+    .journal-cover-link{display:block;overflow:hidden;background:#090c13;line-height:0}
+    .journal-cover-link img{display:block;width:100%;height:clamp(245px,31vw,390px);object-fit:cover;object-position:center 52%;transition:transform .45s ease}
+    .journal-story:hover .journal-cover-link img{transform:scale(1.018)}
+    .journal-story-copy{padding:25px clamp(22px,4vw,38px) 29px;border-top:3px solid #528bf2;background:#101c36}
+    .journal-story-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;color:#aab4c8;font-size:.8rem;margin-bottom:12px}
+    .journal-story-meta span{color:#88b2ff;font-weight:650}
+    .journal-story-copy h3{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.2;letter-spacing:-.025em;color:#fff;margin:0 0 11px}
+    .journal-story-copy h3 a{color:inherit;text-decoration:none}
+    .journal-story-copy h3 a:hover{color:#b6d1ff}
+    .journal-story-copy p{max-width:820px;color:#c7ccd6;font-size:.98rem;line-height:1.7;margin:0}
+    .journal-read-link{display:inline-block;margin-top:19px;padding-bottom:4px;border-bottom:1px solid #80aef7;color:#dce8ff;font-size:.9rem;font-weight:650;text-decoration:none}
+    .journal-read-link:hover{color:#8db3f7}
+    .journal-newsletter{margin:54px 0 0;padding:25px 0 0;border-top:1px solid rgba(255,255,255,.14)}
+    .journal-newsletter h2{font-size:1.2rem;color:#fff;margin:0 0 6px}
+    .journal-newsletter p{max-width:650px;color:#b8bbc4;font-size:.9rem;line-height:1.65;margin:0 0 16px}
+    .journal-newsletter form{display:flex;gap:10px;max-width:620px}
+    .journal-newsletter input{min-width:0;flex:1;padding:11px 13px;background:#191a21;border:1px solid #444752;color:#fff}
+    .journal-newsletter button{padding:11px 17px;background:#244f9e;border:1px solid #528bf2;color:#fff;font-weight:650;cursor:pointer}
+    .publication-section{margin-bottom:54px}
+    .publication-list{border-top:1px solid rgba(255,255,255,.15)}
+    .publication-row{display:grid;grid-template-columns:clamp(112px,16vw,168px) minmax(0,1fr);gap:clamp(20px,3.6vw,40px);padding:25px 0;border-bottom:1px solid rgba(255,255,255,.15);align-items:start}
+    .publication-cover{display:block;background:#080b12;line-height:0;box-shadow:8px 8px 0 rgba(0,0,0,.34)}
+    .publication-cover img{display:block;width:100%;aspect-ratio: .72 / 1;object-fit:cover}
+    .publication-row-meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;color:#adb2bd;font-size:.78rem;margin:1px 0 10px}
+    .publication-row-meta span:first-child{color:#8db3f7;font-weight:700}
+    .publication-row h3{font-size:clamp(1.22rem,2.4vw,1.75rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:#fff;margin:0 0 8px}
+    .publication-row h3 a{color:inherit;text-decoration:none}
+    .publication-row h3 a:hover{color:#a9c9ff}
+    .publication-byline{font-size:.87rem;color:#c8cbd3;margin:0 0 11px}
+    .publication-description{font-size:.91rem;line-height:1.62;color:#b8bbc4;margin:0 0 12px;max-width:820px}
+    .publication-row-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:13px}
+    .publication-doi{font-family:ui-monospace,Consolas,monospace;font-size:.75rem;color:#9ebfff;text-decoration:none}
+    .publication-open{font-size:.85rem;font-weight:650;color:#fff;text-decoration:none;border-bottom:1px solid #80aef7;padding-bottom:3px}
+    .publication-details{margin-top:12px;color:#c5c8d0;font-size:.82rem}
+    .publication-details summary{width:max-content;max-width:100%;cursor:pointer;color:#aebedf}
+    .publication-details summary:hover{color:#fff}
+    .publication-details-content{padding:10px 0 0;line-height:1.6}
+    .publication-details-content p{margin:4px 0}
+    .publication-articles{list-style:none;padding:0;margin:0;border-top:1px solid rgba(255,255,255,.13)}
+    .publication-articles li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:center;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.13)}
+    .publication-article-category{display:block;color:#8db3f7;font-size:.75rem;margin-bottom:4px}
+    .publication-articles h3{font-size:1rem;margin:0;color:#fff}
+    .publication-articles h3 a{color:inherit;text-decoration:none}
+    .publication-articles h3 a:hover{color:#a9c9ff}
+    .publication-articles .journal-index-link{font-size:.82rem;color:#b9d0fa;text-decoration:none}
+    .journal-featured-image{margin:0 0 30px;overflow:hidden;background:#080b12;border:1px solid rgba(255,255,255,.12)}
+    .journal-featured-image img{display:block;width:100%;max-height:420px;aspect-ratio:2.15 / 1;object-fit:cover;object-position:center 52%}
+    .journal-featured-image figcaption{padding:9px 13px;color:#aab4c8;font-size:.75rem;border-top:1px solid rgba(255,255,255,.12)}
+    .journal-article-shell{position:relative;z-index:1}
+    .journal-article-shell h1{letter-spacing:-.035em}
+    :focus-visible{outline:2px solid #a9c9ff;outline-offset:4px}
+    @media(max-width:640px){
+      .journal-shell,.publication-shell{width:min(100% - 32px,1120px);padding-top:118px;padding-bottom:68px}
+      .journal-intro,.publication-intro{padding-bottom:26px;margin-bottom:29px}
+      .journal-section-heading,.publication-section-heading{align-items:start;flex-direction:column;gap:7px}
+      .journal-cover-link img{height:250px}
+      .journal-story-copy{padding:19px 18px 23px}
+      .journal-story-meta{flex-direction:column;align-items:start;gap:5px}
+      .journal-newsletter form{flex-direction:column}
+      .publication-row{grid-template-columns:96px minmax(0,1fr);gap:17px;padding:20px 0}
+      .publication-cover{box-shadow:5px 5px 0 rgba(0,0,0,.34)}
+      .publication-articles li{grid-template-columns:minmax(0,1fr);gap:7px}
+    }
+    @media(prefers-reduced-motion:reduce){.journal-cover-link img{transition:none}.journal-story:hover .journal-cover-link img{transform:none}}
+</style>
+<style>
+    .journal-list{max-width:980px;gap:17px}
+    .journal-story{display:grid;grid-template-columns:clamp(190px,25vw,270px) minmax(0,1fr);align-items:stretch;background:#090a0d;border-color:#242730;transition:border-color .2s ease}
+    .journal-story:hover{border-color:#35445f}
+    .journal-cover-link{min-height:180px;height:100%;background:#06070a}
+    .journal-cover-link img{height:100%;min-height:180px;max-height:230px;object-fit:cover;object-position:center 52%;transition:transform .3s ease}
+    .journal-story-copy{padding:18px 22px 19px;border-top:0;border-left:2px solid #304c7d;background:#090a0d}
+    .journal-story-meta{margin-bottom:8px;font-size:.74rem}
+    .journal-story-copy h3{font-size:clamp(1.15rem,1.7vw,1.45rem);margin-bottom:8px}
+    .journal-story-copy p{font-size:.88rem;line-height:1.58}
+    .journal-read-link{margin-top:12px;font-size:.84rem}
+    .reader-page{position:relative;isolation:isolate;flex:1 0 auto;width:100%;height:100svh;min-height:580px;overflow:hidden;background:#08090c}
+    .reader-backdrop{position:absolute;inset:0 0 auto;height:74vh;overflow:hidden;background:#06070a}
+    .reader-backdrop img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 48%}
+    .reader-backdrop::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,9,.24) 0%,rgba(5,6,9,.08) 38%,#0c0e12 100%)}
+    .reader-sheet{position:absolute;z-index:2;left:50%;bottom:0;display:flex;flex-direction:column;width:min(calc(100% - 40px),1080px);height:78vh;max-height:900px;min-height:min(430px,70svh);transform:translateX(-50%) translateY(var(--reader-offset,0px));overflow:hidden;background:#0c0e12;border:1px solid #292c33;border-top:2px solid #365a91;box-shadow:0 -18px 54px rgba(0,0,0,.38);transition:transform .24s ease}
+    .reader-sheet.is-dragging{transition:none;user-select:none}
+    .reader-drag-handle{position:relative;flex:0 0 38px;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;border-bottom:1px solid #252831;background:#101217;color:#858b97;cursor:grab;touch-action:none;font:500 .7rem/1.2 Inter,Arial,sans-serif}
+    .reader-drag-handle:active{cursor:grabbing}
+    .reader-grab-mark{display:block;width:36px;height:3px;border-radius:3px;background:#707783}
+    .reader-drag-handle span:last-child{position:absolute;right:16px}
+    .reader-scroll-region{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-color:#444b58 #0c0e12}
+    .reader-content{padding-top:26px!important;padding-bottom:64px!important}
+    .reader-content .article-section{max-width:800px;margin:30px auto 0;color:#c8cbd2}
+    .reader-content .article-section h2{color:#f2f3f5}
+    .reader-content .article-section figure{background:#111318;border:1px solid #292d35}
+    .reader-content .article-section figcaption{color:#9ea3ac}
+    .reader-content .article-section img{max-height:560px;object-fit:contain}
+    .reader-content .article-section table{color:#d3d5db}
+    @media(max-width:640px){
+      .journal-list{gap:14px}
+      .journal-story{grid-template-columns:1fr}
+      .journal-cover-link{height:178px;min-height:0}
+      .journal-cover-link img{height:178px;min-height:0}
+      .journal-story-copy{padding:16px 17px 18px;border-left:0;border-top:2px solid #304c7d}
+      .reader-page{height:100svh;min-height:540px}
+      .reader-backdrop{height:67svh}
+      .reader-backdrop img{object-position:center 45%}
+      .reader-sheet{width:calc(100% - 12px);height:77svh;min-height:68svh}
+      .reader-drag-handle{flex-basis:42px}
+      .reader-drag-handle span:last-child{right:12px;font-size:.62rem}
+      .reader-content{padding-top:22px!important;padding-bottom:52px!important}
+    }
+    @media(prefers-reduced-motion:reduce){.journal-story,.journal-cover-link img,.reader-sheet{transition:none}}
+</style>
+
+
+
+
+<style>
+.reader-page{position:relative!important;isolation:isolate;width:100%;height:auto!important;min-height:100vh!important;overflow:visible!important;flex:1 0 auto;background:#08090c!important;padding-bottom:1px}.reader-backdrop{position:fixed!important;inset:0!important;height:100vh!important;z-index:-1;background:#06070a}.reader-backdrop img{object-fit:cover!important;object-position:center 48%!important}.reader-backdrop::after{background:linear-gradient(180deg,rgba(5,6,9,.12) 0%,rgba(5,6,9,.08) 34%,rgba(8,10,14,.72) 74%,#080a0e 100%)!important}.reader-page::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url('/assets/magazine/spacetime-grid.svg') center 34%/min(1500px,100vw) auto no-repeat;opacity:.36;mix-blend-mode:screen}.reader-sheet{position:relative!important;z-index:2;left:auto!important;bottom:auto!important;display:block!important;width:min(calc(100% - 40px),980px)!important;height:auto!important;max-height:none!important;min-height:0!important;overflow:visible!important;margin:59vh auto 48px!important;transform:none!important;background:rgba(12,14,19,.975)!important;border:1px solid #30343d!important;border-top:2px solid #45658b!important;box-shadow:0 -22px 66px rgba(0,0,0,.48)!important;transition:margin-top .52s cubic-bezier(.2,.75,.25,1)!important}.reader-page.is-raised .reader-sheet{margin-top:26vh!important}.reader-drag-handle{display:none!important}.reader-scroll-region{display:block!important;overflow:visible!important;min-height:0!important;overscroll-behavior:auto!important}.reader-content{padding-top:clamp(25px,4vw,42px)!important;padding-bottom:64px!important}.reader-content .article-section{max-width:800px;margin:30px auto 0;color:#c8cbd2}.reader-content .article-section figure{display:flex;flex-direction:column;align-items:center;width:100%;max-width:100%;margin:1.6rem auto;background:#111318;border:1px solid #292d35;padding:12px}.reader-content .article-section figure img{display:block;width:auto;height:auto;max-width:min(100%,520px);max-height:340px;object-fit:contain;margin:0 auto}.reader-content .article-section figcaption{max-width:600px;margin:.65rem auto 0;text-align:center;color:#9ea3ac}.reader-content .article-section .figpair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;max-width:700px;margin:1.5rem auto}.reader-content .article-section .figpair figure{margin:0}.reader-content .article-section .figpair img{max-width:100%;max-height:250px}.reader-content .article-section table{color:#d3d5db}@media(max-width:640px){.reader-sheet{width:calc(100% - 14px)!important;margin-top:53vh!important;padding:0!important}.reader-page.is-raised .reader-sheet{margin-top:24vh!important}.reader-content{padding-top:24px!important;padding-bottom:48px!important}.reader-content .article-section figure img{max-width:min(100%,430px);max-height:285px}.reader-content .article-section .figpair{grid-template-columns:1fr}}
+</style>
+    <link rel="stylesheet" href="/assets/site-motion.css">
+</head>
+<body class="bg-[#121116] text-[#e2e8f0] min-h-screen flex flex-col selection:bg-[#528bf2] selection:text-white antialiased">
+
+<!-- Header Navigation -->
+<header class="fixed top-0 w-full bg-gradient-to-r from-[#030d2af4] to-[#0a1a4df4] shadow-lg py-4 z-[100] transition-all duration-300 select-none">
+    <div class="max-w-[1300px] mx-auto flex items-center justify-between w-full px-4 sm:px-6">
+
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="/" class="inline-block focus:outline-none">
+                <img src="/assets/uploads/2023/07/Logo-1.png"
+                     alt="STEM October Physics Club"
+                     class="hover:scale-105 transition-transform duration-200 w-[190px] sm:w-[220px] h-auto object-contain">
+            </a>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="site-desktop-nav hidden xl:flex items-center gap-6">
+            <ul class="site-nav-list flex items-center gap-6">
+                <li>
+                    <a href="/"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages/about.html"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages/partners.html"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Partners
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://iphr.octphysicsclub.org/"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        IPhR
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages/donate.html"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Donations
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages/compass.html"
+                       class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        COMPASS
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li><a href="https://ypwc.octphysicsclub.org/" target="_blank" rel="noopener noreferrer" class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">YPWC<span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span></a></li>
+                <li>
+                    <a href="/pages/magazine.html" class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                        Magazine
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                    </a>
+                </li>
+                <li class="site-nav-cta">
+                    <a href="/pages/publications.html"
+                       class="bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white px-6 py-2.5 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg hover:shadow-xl inline-block">
+                        Publications
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Tablet / Mobile Hamburger Button -->
+        <div class="flex xl:hidden items-center">
+            <button id="mobile-menu-toggle"
+                    type="button"
+                    class="p-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#528bf2]"
+                    aria-label="Toggle menu"
+                    aria-expanded="false">
+                <svg id="hamburger-icon" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-drawer" class="hidden xl:hidden border-t border-white/10 bg-[#030d2af4] px-6 py-4 transition-all duration-300">
+        <ul class="flex flex-col gap-3">
+            <li>
+                <a href="/" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/pages/about.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="/pages/partners.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Partners
+                </a>
+            </li>
+            <li>
+                <a href="https://iphr.octphysicsclub.org/" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    IPhR
+                </a>
+            </li>
+            <li>
+                <a href="/pages/donate.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    Donations
+                </a>
+            </li>
+            <li>
+                <a href="/pages/compass.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
+                    COMPASS
+                </a>
+            </li>
+            <li>
+                <a href="https://ypwc.octphysicsclub.org/" target="_blank" rel="noopener noreferrer" class="block py-2 text-lg font-medium text-white hover:text-[#528bf2]">YPWC</a><a href="/pages/magazine.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">Magazine</a>
+            </li>
+            <li class="pt-2">
+                <a href="/pages/publications.html" class="block w-full text-center bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white py-3 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg">
+                    Publications
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<script>
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const navDrawer = document.getElementById('mobile-nav-drawer');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (menuToggle && navDrawer) {
+        menuToggle.addEventListener('click', function() {
+            const isHidden = navDrawer.classList.contains('hidden');
+            if (isHidden) {
+                navDrawer.classList.remove('hidden');
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                navDrawer.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+    }
+</script>
+
+<main class="reader-page">
+<div class="site-transition-ripple" aria-hidden="true"></div>
+    <div class="reader-backdrop" aria-hidden="true"><img src="/assets/magazine/covers/spacetime.jpg" alt="A black hole and bright stars above a curved spacetime grid"></div>
+    <section class="reader-sheet" aria-label="Article reader">
+        <button class="reader-drag-handle" type="button" aria-label="Drag to reveal more of the image or expand the article" aria-controls="article-scroll" aria-valuemin="-18" aria-valuemax="36" aria-valuenow="0"><span class="reader-grab-mark" aria-hidden="true"></span><span>Drag to adjust · Scroll to read</span></button>
+        <div class="reader-scroll-region" id="article-scroll" tabindex="0"><div class="reader-content relative max-w-4xl mx-auto px-6 py-10"><!-- Breadcrumbs & Category Badge -->
+        <div class="mb-6 flex flex-wrap items-center gap-3">
+            <a href="/pages/magazine.html" class="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-[#528bf2] hover:text-[#6ba3ff] transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                <span>Magazine</span>
+            </a>
+            <span class="text-gray-600">&bull;</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#528bf2]/10 border border-[#528bf2]/30 text-[#528bf2]">
+                General Relativity & Cosmology
+            </span>
+        </div>
+
+        <!-- Article Title & Header -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
+            The Invisible Threads: Weaving Time, Space and Destiny
+        </h1>
+
+        <p class="text-lg text-cyan-300 font-medium mb-6 italic">
+            Swim in the wonders of the spacetime fabric, and see how everything swims in it.
+        </p>
+
+        <!-- Metadata Bar -->
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400 border-b border-white/10 pb-6 mb-10">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-[#528bf2]/20 border border-[#528bf2]/30 flex items-center justify-center text-[#528bf2] font-bold text-xs">
+                    AW
+                </div>
+                <span>By <strong class="text-white">Adel Wasfy</strong></span>
+            </div>
+            <span>&bull;</span>
+            <span>September 6, 2025</span>
+            <span>&bull;</span>
+            <span>8 min read</span>
+            <span>&bull;</span>
+            <span class="text-emerald-400 font-medium">LaTeX Math Enabled</span>
+        </div><article class="article-section text-gray-300 text-base sm:text-lg leading-relaxed space-y-7">
+
+            <p class="lead-paragraph">
+                It’s midnight. You’re standing in a quiet valley. The mountains around you fade into dark silhouettes, and the starlight above fills you with excitement for a night of stargazing through your telescope. You focus on what looks like a bright star with a tiny blemish. You adjust the focus, and in a breath of realization, you find that it’s not a star at all, but Jupiter, distant yet luminous. You wonder about the long journey of each photon, reflected from Jupiter’s cloud tops, crossing the cosmic sea to meet your gaze.
+            </p>
+
+            <p>
+                The answer is something we have never known in classical Newton’s equations. It lies in Einstein’s general relativity. Jupiter's large mass causes a curvature in a geometrical manifold known as the <em>Curvature of Spacetime</em>, bending the geodesic path those photons follow, so that without you even noticing, Jupiter is subtly changing not just your view of the universe, but also the moment in time you’re experiencing.
+            </p>
+
+            <!-- Section 1: Bending of Light -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Bending of Light – From the Sun to Black Holes</h2>
+
+            <p>
+                The idea of light deflecting near massive objects like Jupiter, the Sun, and black holes was a bold prediction in Einstein’s general relativity that met widespread initial skepticism. However, in May 1919, when Sir Arthur Eddington led an astronomical expedition to the island of Príncipe to photograph a total solar eclipse, scientists captured stars located visually behind the Sun. To their astonishment, the stars’ apparent positions had shifted outward away from the solar limb.
+            </p>
+
+            <p>
+                The cause? Light originating from those distant stars had bent as it traversed the gravitational curvature produced by the Sun's mass. This historic measurement provided the world's first experimental validation that gravity deflects electromagnetic radiation | a phenomenon now termed <strong>gravitational lensing</strong>.
+            </p>
+
+            <!-- Figure: Starlight Deflection -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/09/PSE10_Fig_38-18_starlight_deflection.png"
+                     alt="Light bending around the sun"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-lg">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 1: Geometric deflection of starlight grazing the solar limb during the 1919 total eclipse.
+                </figcaption>
+            </figure>
+
+            <p>
+                The observed angle of deflection can be derived directly from the Schwarzschild metric of general relativity. For a photon grazing a spherically symmetric mass $M$ at an impact parameter $b$, the total angular deflection $\theta$ is given by:
+            </p>
+
+            $$\theta \approx \frac{4GM}{c^2 b}$$
+
+            <p>
+                For light just grazing the Sun’s surface (where the impact parameter equals the solar radius $b \approx R_\odot$ and the mass is $M_\odot$), we write:
+            </p>
+
+            $$\theta_\odot \approx \frac{4GM_\odot}{c^2 R_\odot}$$
+
+            <p>
+                Substituting the known physical constants:
+                <br>&bull; Universal gravitational constant $G = 6.674 \times 10^{-11}\text{ N}\cdot\text{m}^2/\text{kg}^2$
+                <br>&bull; Solar mass $M_\odot = 1.989 \times 10^{30}\text{ kg}$
+                <br>&bull; Speed of light $c = 2.998 \times 10^8\text{ m/s}$
+                <br>&bull; Solar radius $R_\odot = 6.963 \times 10^8\text{ m}$
+            </p>
+
+            $$\theta = \frac{4 \times \left(6.674 \times 10^{-11}\right) \times \left(1.989 \times 10^{30}\right)}{\left(3.00 \times 10^8\right)^2 \times \left(6.963 \times 10^8\right)}$$
+
+            $$\theta \approx 8.48 \times 10^{-6}\text{ rad} = 1.75\text{ arcseconds}$$
+
+            <p>
+                This exact value of $1.75^{\prime\prime}$ was confirmed by Eddington’s expedition plates, permanently cementing Einstein’s theory over the Newtonian corpuscular value ($0.875^{\prime\prime}$, which predicted only half the actual bending).
+            </p>
+
+            <!-- Section 2: Spacetime Fabric and Time Dilation -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">The Spacetime Fabric and Time Dilation</h2>
+
+            <!-- Figure: Spacetime deformation GIF -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/09/17696546dacaaa26aeb8dd7f1316b207.gif"
+                     alt="The spacetime fabric deforming around a large mass"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-2xl">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 2: Animated representation of a massive celestial body generating curvature in the spacetime continuum.
+                </figcaption>
+            </figure>
+
+            <p>
+                Spacetime is the four-dimensional manifold in which all particles, photons, and fields propagate. Its deformation does not solely redirect trajectories of light; it alters the fundamental flow of proper time $\tau$ | the fourth dimension in relativity.
+            </p>
+
+            <p>
+                Consider a classic thought experiment: envision two ultra-precise atomic clocks. Clock 1 sits on the summit of Mount Everest (altitude $\approx 8,848\text{ m}$), while Clock 2 rests at sea level. Because Clock 2 is immersed deeper within Earth's gravitational potential well, it experiences <strong>gravitational time dilation</strong>. Relative to an observer on the mountain, the sea-level clock ticks measurably slower.
+            </p>
+
+            <p>
+                Accounting for both gravitational red-shift and kinematic time dilation from Earth's rotation, the fractional proper time difference is expressed as:
+            </p>
+
+            $$\frac{\Delta\tau}{\tau} = \frac{GM}{c^2}\left(\frac{1}{r_{\text{sea}}} - \frac{1}{r_{\text{everest}}}\right) - \frac{v_{\text{sea}}^2 - v_{\text{everest}}^2}{2c^2}$$
+
+            $$\frac{\Delta\tau}{\tau} \approx 9.6577 \times 10^{-13} \implies \Delta\tau_{\text{per day}} \approx 83.44\text{ ns/day}$$
+
+            <!-- Figure: Time dilation in clocks -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/09/Picture3.png"
+                     alt="Time dilation in clocks experiment"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 3: Atomic clock verification of gravitational and kinematic time dilation across altitudes.
+                </figcaption>
+            </figure>
+
+            <p>
+                While nanoseconds seem imperceptible in everyday life, this relativistic difference becomes vital in aerospace and satellite telecommunications. The Global Positioning System (GPS) constellation operates 31 satellites orbiting at an altitude of approximately $20,200\text{ km}$ ($r_{\text{S}} \approx 26,578\text{ km}$).
+            </p>
+
+            <p>
+                At this high altitude:
+                <br>&bull; <strong>Gravitational time dilation:</strong> The weaker gravity causes satellite clocks to tick faster by $+45.9\ \mu\text{s/day}$.
+                <br>&bull; <strong>Special relativistic kinematic dilation:</strong> The satellite's orbital speed ($v_{\text{S}} \approx 3.87\text{ km/s}$) causes clocks to tick slower by $-7.2\ \mu\text{s/day}$.
+            </p>
+
+            $$\frac{\Delta\tau}{\tau} = \frac{GM}{c^2}\left(\frac{1}{r_{\text{E}}} - \frac{1}{r_{\text{S}}}\right) - \frac{v_{\text{S}}^2 - v_{\text{E}}^2}{2c^2}$$
+
+            $$\frac{\Delta\tau}{\tau} = \frac{3.986 \times 10^{14}}{(2.998 \times 10^8)^2} \left(\frac{1}{6378137} - \frac{1}{26578137}\right) - \frac{(3872.6)^2 - (465.1)^2}{2(2.998 \times 10^8)^2}$$
+
+            $$= 5.2848 \times 10^{-10} - 8.2230 \times 10^{-11} = 4.4625 \times 10^{-10}$$
+
+            $$\Delta\tau_{\text{per day}} = 4.4625 \times 10^{-10} \times 86400\text{ s} \approx +38.56\ \mu\text{s/day}$$
+
+            <!-- Figure: Earth mass bending spacetime affecting GPS -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/09/Picture4.jpg"
+                     alt="The Earth's mass bending the spacetime fabric, affecting satellites"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 4: Gravitational potential well of Earth and relativistic time corrections applied to GPS satellite orbits.
+                </figcaption>
+            </figure>
+
+            <div class="my-6 p-5 rounded-2xl bg-[#528bf2]/10 border border-[#528bf2]/30 text-sm sm:text-base leading-relaxed">
+                <strong class="text-white">Why Relativistic Precision Matters:</strong> Light propagates at approximately $30\text{ cm/ns}$ ($3 \times 10^8\text{ m/s}$). An uncorrected error of $38.56\ \mu\text{s}$ per day would translate into a navigational drift of over <strong>$11.5\text{ km}$ every single day</strong>! GPS receivers would become entirely unusable within minutes without general relativistic factory presets in satellite clocks.
+            </div>
+
+            <!-- Section 3: Gravitational Waves -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Gravitational Waves: Ripples in Spacetime</h2>
+
+            <p>
+                Can spacetime itself vibrate? Yes. In general relativity, accelerating quadrupolar masses generate propagating metric perturbations | ripples in spacetime that travel across the cosmos at the exact speed of light.
+            </p>
+
+            <p>
+                When two coalescing black holes or neutron stars inspiral and merge, the event terminates in a phase called <strong>ringdown</strong>. During ringdown, the newly formed single horizon settles into a stationary Kerr black hole, radiating colossal quantities of energy as gravitational waves.
+            </p>
+
+            <!-- Figure: Gravitational waves GIF -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/09/U2J9ZM0.gif"
+                     alt="Simulation of gravitational waves"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain shadow-2xl">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 5: Numerical relativity simulation of quadrupole gravitational wave emission during binary black hole coalescence.
+                </figcaption>
+            </figure>
+
+            <p>
+                In September 2015, the Laser Interferometer Gravitational-Wave Observatory (LIGO) achieved humankind’s first direct observation of gravitational waves (event <strong>GW150914</strong>). Emitted by two stellar-mass black holes ($36M_\odot$ and $29M_\odot$) merging $1.3\text{ billion}$ light-years away, the waves stretched and squeezed LIGO’s $4\text{-kilometer}$ laser arms by less than one-ten-thousandth the diameter of a proton ($h \sim 10^{-21}$).
+            </p>
+
+            <!-- Figure: LIGO measurement -->
+            <figure class="figure-ligo my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/09/LIGO_measurement_of_gravitational_waves.svg_.png"
+                     alt="First detection of gravitational waves"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 6: LIGO strain measurements at Hanford and Livingston alongside numerical relativity general relativistic wave models and time-frequency spectrograms.
+                </figcaption>
+            </figure>
+
+            <!-- Section 4: Wormholes -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Wormholes (Einstein–Rosen Bridges)</h2>
+
+            <p>
+                Just as Einstein’s field equations admit gravitational lenses and gravitational wave solutions, they also yield speculative topological structures known as <strong>Einstein–Rosen bridges</strong> or wormholes.
+            </p>
+
+            <!-- Figure: Wormhole shape -->
+            <figure class="my-8 rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
+                <img src="/assets/uploads/2025/09/wormholes.jpg"
+                     alt="Theoretical shape of a wormhole"
+                     class="mx-auto rounded-xl max-w-full h-auto object-contain">
+                <figcaption class="mt-4 text-center text-sm text-gray-400 italic">
+                    Figure 7: Embedding diagram of an Einstein–Rosen bridge connecting two asymptotically flat spacetime regions through an open throat.
+                </figcaption>
+            </figure>
+
+            <p>
+                Mathematically, a wormhole consists of two distinct asymptotic "mouths" connected by a spatial "throat". Passing through one mouth could theoretically allow instant traversal across cosmological distances. However, standard general relativity proves that without exotic matter possessing <strong>negative energy density</strong> (violating the Null Energy Condition), any classical wormhole throat pinches shut faster than light can traverse it, forming singularities.
+            </p>
+
+            <p>
+                While macroscopic traversable wormholes remain theoretical conjectures, their mathematical study continues to stimulate research at the intersection of general relativity, quantum entanglement (the $ER = EPR$ conjecture), and quantum gravity.
+            </p>
+
+            <!-- Section 5: Conclusions -->
+            <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6">Conclusions</h2>
+
+            <p>
+                For over a century, Albert Einstein’s general theory of relativity has guided our understanding of the universe’s most profound mechanisms. From the deflection of starlight near the Sun and time dilation enabling global satellite navigation, to the cosmic symphonies of gravitational waves detected on Earth, geometry and physical reality remain inextricably linked.
+            </p>
+
+            <p class="border-t border-white/10 pt-6 text-gray-400 italic">
+                In Einstein’s universe, space is not an empty stage, and time is not an immutable clock; together, they form a dynamic, vibrating fabric. Every discovery is not the end of the inquiry, but an invitation to look deeper into the cosmos.
+            </p>
+        </article></div></div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gradient-to-b from-[#121116] to-[#0a0a0f] border-t border-white/10 mt-auto">
+    <div class="max-w-[1300px] mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+            <!-- Logo and Description -->
+            <div class="col-span-1 md:col-span-2">
+                <a href="/" class="inline-block mb-4">
+                    <img src="/assets/uploads/2023/07/Logo-1.png"
+                         alt="STEM October Physics Club"
+                         class="w-[200px] h-auto object-contain">
+                </a>
+                <p class="text-gray-400 text-sm max-w-md leading-relaxed">
+                    The Official Physics Club of STEM High School for Boys – 6th of October. Providing collegiate-level physics training, organizing international competitions, and publishing scientific materials for students worldwide.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-white font-semibold mb-4 text-base tracking-wide">Quick Links</h3>
+                <ul class="space-y-2.5">
+                    <li>
+                        <a href="/" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/about.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/partners.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Partners
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://iphr.octphysicsclub.org/" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Competition (IPhR)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/compass.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            COMPASS Program
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/publications.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Publications Archive
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connect -->
+            <div>
+                <h3 class="text-white font-semibold mb-4 text-base tracking-wide">Connect</h3>
+                <ul class="space-y-2.5">
+                    <li>
+                        <a href="https://www.facebook.com/STEM.Oct.Physics" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Facebook Page</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/groups/stem.oct.physics" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Facebook Group</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/stem-october-physics-club/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:stem.oct.physics@gmail.com" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm flex items-center gap-2">
+                            <span>Email Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="mt-12 pt-8 border-t border-white/10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">
+                    © 2024 - 2026 STEM October Physics Club. All rights reserved. Powered by STEM High School for Boys  |  6th of October.
+                </p>
+                <div class="flex gap-6">
+                    <a href="/pages/about.html" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
+                        About
+                    </a>
+                    <a href="https://iphr.octphysicsclub.org/" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
+                        IPhR Competition
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="/assets/magazine/reader-sheet.js" defer></script>
+<script defer src="/assets/vendor/gsap/gsap.min.js"></script>
+<script defer src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script defer src="/assets/site-motion.js"></script>
+</body>
+</html>

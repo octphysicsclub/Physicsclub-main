@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home — STEM October Physics Club</title>
+    <title>Home  |  STEM October Physics Club</title>
     <meta name="description" content="The Official Physics Club of October STEM School. Providing world-class physics training, competitions, and academic publications.">
-    <link rel="icon" href="assets/uploads/2023/07/cropped-Icon-150x150.png" sizes="32x32" type="image/png">
-    
+    <link rel="icon" href="/assets/uploads/2023/07/cropped-Icon-150x150.png" sizes="32x32" type="image/png">
+
     <!-- Google Fonts: Montserrat & Inter matching IPhR Subdomain -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -59,67 +59,92 @@
 
         /* Ambient line background */
         .ambient-line-bg {
-            background-image: url('assets/iphr/bg_img_line.png');
+            background-image: url('/assets/iphr/bg_img_line.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
         }
     </style>
+<style>
+.school-photo-frame{padding:2px;background:linear-gradient(135deg,rgba(82,139,242,.86),rgba(42,58,112,.38) 47%,rgba(125,97,255,.72));box-shadow:0 22px 70px rgba(0,0,0,.35),0 0 45px rgba(82,139,242,.12)}
+.school-photo-image{border-radius:10px;filter:saturate(.96) contrast(1.03)}
+.school-mark-glow{background:radial-gradient(ellipse at center,rgba(44,78,155,.8) 0%,rgba(24,42,91,.54) 24%,rgba(13,19,39,.1) 46%,transparent 62%)}
+.school-club-mark{width:clamp(42px,5vw,54px);height:auto;filter:drop-shadow(0 0 10px rgba(110,163,255,.78)) drop-shadow(0 3px 8px rgba(0,0,0,.62));opacity:.98}
+.hero-backdrop-image{transform:scale(1.04);will-change:transform}
+.hero-aurora{position:absolute;inset:-28%;pointer-events:none;background:radial-gradient(ellipse at 22% 38%,rgba(32,96,205,.18),transparent 37%),radial-gradient(ellipse at 76% 55%,rgba(102,71,193,.17),transparent 34%),radial-gradient(ellipse at 52% 18%,rgba(36,151,197,.1),transparent 29%);background-size:140% 140%;mix-blend-mode:screen;will-change:transform,opacity}
+.hero-orbit{position:absolute;width:min(74vw,860px);height:min(34vw,390px);left:50%;top:43%;border:1px solid rgba(136,177,255,.14);border-radius:50%;transform:translate(-50%,-50%) rotate(-19deg);box-shadow:0 0 0 32px rgba(93,145,239,.018),0 0 0 66px rgba(93,145,239,.014);will-change:transform}
+.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border:1px solid rgba(147,186,255,.11);border-radius:50%;inset:15% -7%;transform:rotate(31deg)}
+.hero-orbit:after{inset:-12% 18%;transform:rotate(-42deg)}
+@keyframes hero-image-drift{from{transform:scale(1.04) translate3d(-.5%,0,0)}to{transform:scale(1.12) translate3d(.5%,-.4%,0)}}
+@keyframes hero-aurora-drift{from{transform:translate3d(-2%,-1%,0) scale(.96);opacity:.65}to{transform:translate3d(2%,1%,0) scale(1.05);opacity:1}}
+@keyframes hero-orbit-turn{to{rotate:360deg}}
+@media(prefers-reduced-motion:reduce){.hero-backdrop-image,.hero-aurora,.hero-orbit{animation:none!important;transform:none}.hero-orbit{rotate:-19deg}}
+</style>
+    <link rel="stylesheet" href="/assets/site-motion.css">
 </head>
 <body class="bg-[#121116] text-[#ededed] min-h-screen flex flex-col selection:bg-[#528bf2] selection:text-white antialiased">
 <header class="fixed top-0 w-full bg-gradient-to-r from-[#030d2af4] to-[#0a1a4df4] shadow-lg py-4 z-[100] transition-all duration-300 select-none">
     <div class="max-w-[1300px] mx-auto flex items-center justify-between w-full px-4 sm:px-6">
-        
+
         <!-- Logo -->
         <div class="flex items-center">
-            <a href="index.html" class="inline-block focus:outline-none">
-                <img src="assets/uploads/2023/07/Logo-2.png" 
-                     alt="STEM October Physics Club" 
+            <a href="/" class="inline-block focus:outline-none">
+                <img src="/assets/uploads/2023/07/Logo-1.png"
+                     alt="STEM October Physics Club"
                      class="hover:scale-105 transition-transform duration-200 w-[190px] sm:w-[220px] h-auto object-contain">
             </a>
         </div>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden xl:flex items-center gap-6">
-            <ul class="flex items-center gap-6">
+        <nav class="site-desktop-nav hidden xl:flex items-center gap-6">
+            <ul class="site-nav-list flex items-center gap-6">
                                     <li>
-                        <a href="index.html" 
+                        <a href="/"
                            class="font-medium transition-all duration-200 text-lg relative group text-[#528bf2]">
                             Home                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-100"></span>
                         </a>
                     </li>
                                     <li>
-                        <a href="about.html" 
+                        <a href="/pages/about.html"
                            class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
                             About                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
                         </a>
                     </li>
                                     <li>
-                        <a href="partners.html" 
+                        <a href="/pages/partners.html"
                            class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
                             Partners                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
                         </a>
                     </li>
                                     <li>
-                        <a href="https://iphr.octphysicsclub.org/" 
+                        <a href="https://iphr.octphysicsclub.org/"
                            class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
-                            Competition                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                            IPhR                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
                         </a>
                     </li>
                                     <li>
-                        <a href="donations.html" 
+                        <a href="/pages/donate.html"
                            class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
                             Donations                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
                         </a>
                     </li>
                                     <li>
-                        <a href="compass.html" 
+                        <a href="/pages/compass.html"
                            class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
                             COMPASS                            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
                         </a>
                     </li>
                                 <li>
-                    <a href="publications.html" 
+                                    <a href="https://ypwc.octphysicsclub.org/" target="_blank" rel="noopener noreferrer" class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">YPWC<span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span></a>
+                                </li>
+                                <li>
+                                    <a href="/pages/magazine.html" class="font-medium transition-all duration-200 text-lg relative group text-white hover:text-[#528bf2]">
+                                        Magazine
+                                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#528bf2] transform transition-transform duration-200 scale-x-0 group-hover:scale-x-100"></span>
+                                    </a>
+                                </li>
+                                <li class="site-nav-cta">
+                    <a href="/pages/publications.html"
                        class="bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white px-6 py-2.5 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg hover:shadow-xl inline-block">
                         Publications
                     </a>
@@ -129,10 +154,10 @@
 
         <!-- Tablet / Mobile Hamburger Button -->
         <div class="flex xl:hidden items-center">
-            <button id="mobile-menu-toggle" 
-                    type="button" 
+            <button id="mobile-menu-toggle"
+                    type="button"
                     class="p-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#528bf2]"
-                    aria-label="Toggle menu" 
+                    aria-label="Toggle menu"
                     aria-expanded="false">
                 <svg id="hamburger-icon" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -148,37 +173,41 @@
     <div id="mobile-nav-drawer" class="hidden xl:hidden border-t border-white/10 bg-[#030d2af4] px-6 py-4 transition-all duration-300">
         <ul class="flex flex-col gap-3">
                             <li>
-                    <a href="index.html" 
+                    <a href="/"
                        class="block py-2 text-lg font-medium transition-colors text-[#528bf2]">
                         Home                    </a>
                 </li>
                             <li>
-                    <a href="about.html" 
+                    <a href="/pages/about.html"
                        class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
                         About                    </a>
                 </li>
                             <li>
-                    <a href="partners.html" 
+                    <a href="/pages/partners.html"
                        class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
                         Partners                    </a>
                 </li>
                             <li>
-                    <a href="https://iphr.octphysicsclub.org/" 
+                    <a href="https://iphr.octphysicsclub.org/"
                        class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
-                        Competition                    </a>
+                        IPhR                    </a>
                 </li>
                             <li>
-                    <a href="donations.html" 
+                    <a href="/pages/donate.html"
                        class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
                         Donations                    </a>
                 </li>
                             <li>
-                    <a href="compass.html" 
+                    <a href="/pages/compass.html"
                        class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">
                         COMPASS                    </a>
                 </li>
+                        <li><a href="https://ypwc.octphysicsclub.org/" target="_blank" rel="noopener noreferrer" class="block py-2 text-lg font-medium text-white hover:text-[#528bf2]">YPWC</a></li>
+                        <li>
+                            <a href="/pages/magazine.html" class="block py-2 text-lg font-medium transition-colors text-white hover:text-[#528bf2]">Magazine</a>
+                        </li>
                         <li class="pt-2">
-                <a href="publications.html" 
+                <a href="/pages/publications.html"
                    class="block w-full text-center bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white py-3 rounded-md font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg">
                     Publications
                 </a>
@@ -210,12 +239,13 @@
 </script>
 
 <main class="flex-grow bg-gradient-to-b from-[#121116] via-[#1a1a2e] to-[#121116]">
+<div class="site-transition-ripple" aria-hidden="true"></div>
     <!-- ==================== HERO SECTION ==================== -->
     <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-28 pt-36">
         <!-- Background Hero Image with Deep Cosmic Overlay matching IPhR -->
         <div class="absolute inset-0 pointer-events-none">
-            <img src="assets/iphr/hero.png" 
-                 alt="Physics Background" 
+            <img src="/assets/iphr/hero.png"
+                 alt="Physics Background"
                  class="w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 bg-gradient-to-b from-[#121116]/80 via-transparent to-[#121116]"></div>
         </div>
@@ -238,14 +268,11 @@
 
             <!-- Buttons matching IPhR buttons -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2">
-                <a href="about.html" 
+                <a href="/pages/about.html"
                    class="w-full sm:w-auto px-8 py-4 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-all duration-300 text-center border border-white/10">
                     ABOUT US
                 </a>
-                <a href="compass.html" 
-                   class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white rounded-lg font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 text-center shadow-lg hover:shadow-blue-500/30">
-                    COMPASS PROGRAM
-                </a>
+                <a href="https://iphr.octphysicsclub.org/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white rounded-lg font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 text-center shadow-lg hover:shadow-blue-500/30">IPhR Competition</a>
             </div>
 
             <!-- Stats Counter matching IPhR Stats Structure -->
@@ -255,25 +282,25 @@
                         <!-- Stat 1 -->
                         <div class="flex flex-col items-center text-center group">
                             <span class="text-[#528bf2] font-bold text-4xl sm:text-5xl md:text-6xl transition-all duration-300 md:group-hover:text-7xl">
-                                <span class="animate-counter" data-target="400">400</span>+
+                                <span class="animate-counter" data-target="450">450</span>
                             </span>
-                            <span class="text-white font-medium text-base sm:text-lg mt-2">Trained Members</span>
+                            <span class="text-white font-medium text-base sm:text-lg mt-2">Members</span>
                             <div class="w-20 h-1 bg-[#528bf2] mt-4 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
                         <!-- Stat 2 -->
                         <div class="flex flex-col items-center text-center group">
                             <span class="text-[#528bf2] font-bold text-4xl sm:text-5xl md:text-6xl transition-all duration-300 md:group-hover:text-7xl">
-                                <span class="animate-counter" data-target="2600">2,600</span>+
+                                <span class="animate-counter" data-target="3700">3,700</span>
                             </span>
-                            <span class="text-white font-medium text-base sm:text-lg mt-2">IPhR Participants</span>
+                            <span class="text-white font-medium text-base sm:text-lg mt-2">Participants in IPhR 2026 Season</span>
                             <div class="w-20 h-1 bg-[#528bf2] mt-4 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
                         <!-- Stat 3 -->
                         <div class="flex flex-col items-center text-center group">
                             <span class="text-[#528bf2] font-bold text-4xl sm:text-5xl md:text-6xl transition-all duration-300 md:group-hover:text-7xl">
-                                <span class="animate-counter" data-target="9">9</span>
+                                <span class="animate-counter" data-target="11">11</span>
                             </span>
                             <span class="text-white font-medium text-base sm:text-lg mt-2">Years of Experience</span>
                             <div class="w-20 h-1 bg-[#528bf2] mt-4 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -286,10 +313,11 @@
 
     <!-- ==================== WHO WE ARE SECTION ==================== -->
     <section class="py-20 px-6 max-w-[1300px] mx-auto">
-        <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-12 border-2 border-white/20 hover:border-[#528bf2]/30 transition-all duration-300 shadow-2xl">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="relative overflow-hidden bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-12 border-2 border-white/20 hover:border-[#528bf2]/30 transition-all duration-300 shadow-2xl">
+
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 <!-- Text Details -->
-                <div class="lg:col-span-8 space-y-6">
+                <div class="lg:col-span-7 space-y-6">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#528bf2]/10 border border-[#528bf2]/30 text-[#528bf2] text-xs uppercase tracking-widest font-semibold">
                         WHO WE ARE
                     </div>
@@ -301,7 +329,7 @@
                         As a student-run club affiliated with <strong class="text-white font-semibold">STEM High School for Boys – 6th of October</strong>, we provide collegiate-level physics training, host international competitions, and publish cutting-edge academic research for high schoolers across Egypt and the globe.
                     </p>
                     <div class="pt-2">
-                        <a href="about.html" 
+                        <a href="/pages/about.html"
                            class="inline-flex items-center gap-2 text-base font-semibold text-[#528bf2] hover:text-[#6ba3ff] transition-colors group">
                             <span>Learn more about our team and history</span>
                             <svg class="w-5 h-5 transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -311,23 +339,21 @@
                     </div>
                 </div>
 
-                <!-- Club Emblem Crest -->
-                <div class="lg:col-span-4 flex justify-center">
-                    <div class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-[#0042bf] to-[#528bf2] rounded-3xl blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
-                        <div class="relative bg-[#1a1a20] rounded-2xl p-6 sm:p-8 flex items-center justify-center border border-white/10">
-                            <img src="assets/uploads/2023/07/output-onlinepngtools.png" 
-                                 alt="STEM October Physics Club Emblem" 
-                                 class="max-w-[240px] sm:max-w-[280px] h-auto object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                <!-- Campus portrait with the club mark integrated into the light -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="school-photo-frame relative w-full max-w-[600px] overflow-hidden rounded-xl">
+                        <img src="/assets/uploads/2023/07/school-campus.png" alt="The campus of STEM High School for Boys | 6th of October" class="school-photo-image block w-full aspect-[4/3] object-cover object-center">
+                        <div class="school-mark-glow absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+                            <img src="/assets/brand/integration-mark-white.png" alt="" class="school-club-mark">
                         </div>
                     </div>
-                </div>
+                </div></div>
             </div>
         </div>
     </section>
 
     <!-- ==================== OUR PROGRAMS GRID ==================== -->
-  
+
 <!-- ==================== OUR PROGRAMS GRID ==================== -->
 <section class="py-16 px-6 max-w-[1300px] mx-auto">
     <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
@@ -343,23 +369,20 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Program 1: General Physics Training -->
-        <div class="bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
+        <div class="program-card bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
             <div class="space-y-5">
-                <div class="flex items-center justify-between">
-                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-[#528bf2]/10 border border-[#528bf2]/30 text-[#528bf2] uppercase tracking-wider">
-                        Year-long Academy
-                    </span>
-                    <img src="assets/uploads/2023/07/Elecroahtight.png" alt="General Physics" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+                <div class="flex items-center justify-start gap-4 min-h-[58px]">
+                    <img src="/assets/uploads/2023/07/Elecroahtight.png" alt="" class="w-11 h-11 shrink-0 object-contain opacity-90 group-hover:opacity-100 transition-opacity">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight group-hover:text-[#528bf2] transition-colors">
+                        General Physics Training Program
+                    </h3>
                 </div>
-                <h3 class="text-2xl font-bold text-white group-hover:text-[#528bf2] transition-colors">
-                    General Physics Training Program
-                </h3>
                 <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
                     Trainees master calculus-based general physics through a comprehensive 40-session curriculum. With independent study, rigorous problem assignments, and 1-on-1 academic mentorship, members build an unstoppable foundation in classical mechanics, thermodynamics, oscillations, and electromagnetism.
                 </p>
             </div>
             <div class="pt-6">
-                <a href="about.html" 
+                <a href="/pages/about.html"
                    class="inline-block w-full text-center px-6 py-3.5 rounded-lg text-sm font-medium text-white bg-white/10 hover:bg-white/20 transition-all duration-300 border border-white/10">
                     Learn More
                 </a>
@@ -367,23 +390,18 @@
         </div>
 
         <!-- Program 2: COMPASS Program -->
-        <div class="bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
+        <div class="program-card bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
             <div class="space-y-5">
-                <div class="flex items-center justify-between">
-                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-purple-500/10 border border-purple-500/30 text-purple-400 uppercase tracking-wider">
-                        Computational Physics
-                    </span>
-                    <img src="assets/uploads/2024/09/COMPASS-LOGO-1.png" alt="COMPASS Logo" class="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity">
+                <div class="flex items-center justify-start gap-4 min-h-[58px]">
+                    <img src="/assets/uploads/2025/07/COMPASS-FINAL-LOGO@2x-2048x460.png" alt="" class="h-7 w-auto max-w-[44%] shrink-0 object-contain opacity-95 transition-opacity group-hover:opacity-100">
+                    <h3 class="min-w-0 flex-1 text-xl sm:text-2xl font-bold leading-tight text-white transition-colors group-hover:text-[#528bf2]">COMPASS Program</h3>
                 </div>
-                <h3 class="text-2xl font-bold text-white group-hover:text-[#528bf2] transition-colors">
-                    COMPASS Program
-                </h3>
                 <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
                     COMPASS equips students with computational physics skills to numerically solve and simulate complex systems that cannot be solved analytically. The program emphasizes Python programming, numerical differential equations, Monte Carlo methods, and scientific visualizations in classical and quantum mechanics.
                 </p>
             </div>
             <div class="pt-6">
-                <a href="compass.html" 
+                <a href="/pages/compass.html"
                    class="inline-block w-full text-center px-6 py-3.5 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-[#0042bf] to-[#0066ff] hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg">
                     Apply Now
                 </a>
@@ -391,23 +409,18 @@
         </div>
 
         <!-- Program 3: IPhR Competition -->
-        <div class="bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
+        <div class="program-card bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
             <div class="space-y-5">
-                <div class="flex items-center justify-between">
-                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 uppercase tracking-wider">
-                        Global Competition
-                    </span>
-                    <img src="assets/uploads/2023/07/IPhR-1.png" alt="IPhR" class="h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity">
+                <div class="flex items-center justify-start gap-4 min-h-[58px]">
+                    <img src="/assets/uploads/2023/07/IPhR-10-competition-only.png" alt="" class="h-10 w-auto max-w-[32%] shrink-0 object-contain opacity-90 transition-opacity group-hover:opacity-100">
+                    <h3 class="min-w-0 flex-1 text-xl sm:text-2xl font-bold leading-tight text-white transition-colors group-hover:text-[#528bf2]">IPhR Competition</h3>
                 </div>
-                <h3 class="text-2xl font-bold text-white group-hover:text-[#528bf2] transition-colors">
-                    IPhR Competition
-                </h3>
                 <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
                     International Physics Realm (IPhR) is an annual individual physics competition for high school students in grades 9–12 across 70+ nations. Consisting of two fast-paced rounds of challenging physics problems, IPhR tests conceptual depth and rewards finalists with international certificates and medals.
                 </p>
             </div>
             <div class="pt-6">
-                <a href="https://iphr.octphysicsclub.org/" 
+                <a href="https://iphr.octphysicsclub.org/"
                    target="_blank" rel="noopener noreferrer"
                    class="inline-block w-full text-center px-6 py-3.5 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-[#0042bf] to-[#0066ff] hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-md">
                     Competition Details
@@ -416,17 +429,12 @@
         </div>
 
         <!-- Program 4: STEM October Physics Bowl -->
-        <div class="bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
+        <div class="program-card bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
             <div class="space-y-5">
-                <div class="flex items-center justify-between">
-                    <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 border border-amber-500/30 text-amber-400 uppercase tracking-wider">
-                        School Bowl
-                    </span>
-                    <img src="assets/uploads/2023/07/fdf.png" alt="Physics Bowl" class="h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity">
+                <div class="flex items-center justify-start gap-4 min-h-[58px]">
+                    <img src="/assets/uploads/2023/07/fdf.png" alt="" class="w-11 h-11 max-w-[32%] shrink-0 object-contain opacity-90 transition-opacity group-hover:opacity-100">
+                    <h3 class="min-w-0 flex-1 text-xl sm:text-2xl font-bold leading-tight text-white transition-colors group-hover:text-[#528bf2]">STEM October Physics Bowl</h3>
                 </div>
-                <h3 class="text-2xl font-bold text-white group-hover:text-[#528bf2] transition-colors">
-                    STEM October Physics Bowl
-                </h3>
                 <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
                     A thrilling one-day club bowl where Grade 10 students partner with experienced club members to tackle fast-paced trivia, physics challenges, and collaborative problem-solving. Experience a day filled with camaraderie, intellectual rivalry, and physics fun.
                 </p>
@@ -434,58 +442,50 @@
         </div>
 
       <!-- Program 5: EPORA Experimental Physics Program -->
-<div class="bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
+<div id="epora-program" class="program-card bg-[#1a1a20] rounded-xl p-8 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/30 transition-all duration-300 flex flex-col justify-between group">
     <div class="space-y-5">
-        <div class="flex items-center justify-between">
-            <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 uppercase tracking-wider">
-                Experimental Physics
-            </span>
-            <img src="assets/EPORA_Logo-removebg-preview.png" alt="EPORA Logo" class="h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity">
+        <div class="flex items-center justify-start gap-4 min-h-[58px]">
+            <span class="inline-flex shrink-0 items-center justify-center rounded-lg bg-white p-2"><img src="/assets/brand/epora-logo.png" alt="" class="h-8 w-auto object-contain"></span>
+            <h3 class="min-w-0 flex-1 text-xl sm:text-2xl font-bold leading-tight text-white transition-colors group-hover:text-[#528bf2]">EPORA Program</h3>
         </div>
-
-        <h3 class="text-2xl font-bold text-white group-hover:text-[#528bf2] transition-colors">
-            EPORA Program
-        </h3>
 
         <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
             EPORA gives high school students the opportunity to experience physics beyond the classroom through hands-on experimental laboratory sessions. In partnership with leading Egyptian universities, students engage with real experimental setups, conduct measurements, and analyze results while gaining practical experience with the methods used to investigate physical phenomena.
         </p>
     </div>
-</div>
+        </div>
+        <div class="program-card bg-[#1a1a20] rounded-xl p-7 shadow-xl border border-[#ffffff10] hover:border-[#528bf2]/35 transition-all duration-300 flex flex-col justify-between group">
+            <div class="space-y-5">
+                <div class="flex items-center justify-start gap-4 min-h-[58px]">
+                    <img src="/assets/brand/ypwc-logo.png" alt="" class="w-[72px] h-[72px] max-w-[34%] shrink-0 object-contain opacity-95 transition-opacity group-hover:opacity-100">
+                    <h3 class="min-w-0 flex-1 text-xl sm:text-2xl font-bold leading-tight text-white transition-colors group-hover:text-[#8db3f7]">YPWC</h3>
+                </div>
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed">A scientific writing competition where young physicists turn their questions into clear, original articles and share their ideas with a wider audience.</p>
+            </div>
+            <div class="pt-6"><a href="https://ypwc.octphysicsclub.org/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-lg text-sm font-semibold text-white bg-white/10 hover:bg-white/15 transition-colors border border-white/10"><img src="/assets/brand/ypwc-logo.png" alt="" class="w-6 h-6 object-contain">Visit YPWC</a></div>
+        </div>
+        </div>
 </section>
 
     <!-- ==================== COMPASS BANNER SPOTLIGHT ==================== -->
-    <section class="py-16 px-6 max-w-[1300px] mx-auto">
-        <div class="relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-lg border-2 border-white/20 p-8 sm:p-12 lg:p-16 hover:border-[#528bf2]/30 transition-all duration-300 shadow-2xl">
-            <!-- Background ambient glow -->
-            <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-[#528bf2]/20 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -left-20 -top-20 w-96 h-96 bg-[#0042bf]/20 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
-                <div class="space-y-6 max-w-2xl text-center lg:text-left">
-                    <img src="assets/uploads/2025/07/COMPASS-FINAL-LOGO@2x-2048x460.png" 
-                         alt="COMPASS Final Logo" 
-                         class="h-12 sm:h-16 w-auto object-contain mx-auto lg:mx-0 drop-shadow-lg">
-                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
-                        Are you eager to simulate orbits, wave packets, and chaotic pendulums with Python? Discover how the COMPASS research division prepares students for computational modeling and science careers.
+    <section class="py-10 px-6 max-w-[1300px] mx-auto">
+        <div class="relative rounded-2xl overflow-hidden bg-[#171a22] border border-white/10 px-6 py-8 sm:px-9 sm:py-10 lg:px-12 hover:border-[#528bf2]/30 transition-all duration-300 shadow-xl">
+            <div class="absolute -right-20 -bottom-24 w-80 h-80 bg-[#528bf2]/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,1.35fr)_minmax(250px,.8fr)] items-center gap-8 lg:gap-12">
+                <div class="space-y-4 text-center lg:text-left">
+                    <img src="/assets/uploads/2025/07/COMPASS-FINAL-LOGO@2x-2048x460.png" alt="COMPASS - Computational Physics for Aspiring Scientists" class="h-14 sm:h-[4.5rem] w-auto max-w-[min(100%,420px)] object-contain mx-auto lg:mx-0">
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+                        Simulate orbits, wave packets, and chaotic systems with Python. COMPASS introduces students to computational modeling and modern scientific tools.
                     </p>
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                        <a href="compass.html" 
-                           class="px-8 py-4 bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white rounded-lg font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg text-center">
-                            Explore COMPASS
-                        </a>
-                        <a href="publications.html" 
-                           class="px-8 py-4 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-all duration-300 text-center border border-white/10">
-                            Read Research Publications
-                        </a>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
+                        <a href="/pages/compass.html" class="px-6 py-3 bg-gradient-to-r from-[#0042bf] to-[#0066ff] text-white rounded-lg font-medium hover:from-[#0066ff] hover:to-[#0042bf] transition-all duration-300 shadow-lg text-center">Explore COMPASS</a>
+                        <a href="/pages/publications.html" class="px-6 py-3 bg-white/[0.06] text-white rounded-lg font-medium hover:bg-white/[0.11] transition-all duration-300 text-center border border-white/10">Research publications</a>
                     </div>
                 </div>
-
-                <!-- Graphic Emblem -->
-                <div class="flex-shrink-0">
-                    <img src="assets/uploads/2024/09/COMPASS-LOGO-1.png" 
-                         alt="COMPASS Emblem" 
-                         class="w-48 sm:w-60 h-auto object-contain drop-shadow-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3" aria-label="COMPASS topics">
+                    <div class="flex items-center gap-3 rounded-lg border border-white/10 bg-black/15 px-4 py-3"><span class="text-xs font-semibold tracking-[.18em] text-[#8db3f7]">01</span><span class="text-sm text-gray-200">Scientific Python</span></div>
+                    <div class="flex items-center gap-3 rounded-lg border border-white/10 bg-black/15 px-4 py-3"><span class="text-xs font-semibold tracking-[.18em] text-[#8db3f7]">02</span><span class="text-sm text-gray-200">Numerical methods</span></div>
+                    <div class="flex items-center gap-3 rounded-lg border border-white/10 bg-black/15 px-4 py-3"><span class="text-xs font-semibold tracking-[.18em] text-[#8db3f7]">03</span><span class="text-sm text-gray-200">Physics simulations</span></div>
                 </div>
             </div>
         </div>
@@ -495,12 +495,12 @@
 <footer class="bg-gradient-to-b from-[#121116] to-[#0a0a0f] border-t border-white/10 mt-auto">
     <div class="max-w-[1300px] mx-auto px-6 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            
+
             <!-- Logo and Description -->
             <div class="col-span-1 md:col-span-2">
-                <a href="index.html" class="inline-block mb-4">
-                    <img src="assets/uploads/2023/07/Logo-2.png" 
-                         alt="STEM October Physics Club" 
+                <a href="/" class="inline-block mb-4">
+                    <img src="/assets/uploads/2023/07/Logo-1.png"
+                         alt="STEM October Physics Club"
                          class="w-[200px] h-auto object-contain">
                 </a>
                 <p class="text-gray-400 text-sm max-w-md leading-relaxed">
@@ -513,17 +513,17 @@
                 <h3 class="text-white font-semibold mb-4 text-base tracking-wide">Quick Links</h3>
                 <ul class="space-y-2.5">
                     <li>
-                        <a href="index.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                        <a href="/" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="about.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                        <a href="/pages/about.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
                             About Us
                         </a>
                     </li>
                     <li>
-                        <a href="partners.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                        <a href="/pages/partners.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
                             Partners
                         </a>
                     </li>
@@ -533,13 +533,18 @@
                         </a>
                     </li>
                     <li>
-                        <a href="compass.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                        <a href="/pages/compass.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
                             COMPASS Program
                         </a>
                     </li>
                     <li>
-                        <a href="publications.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                        <a href="/pages/publications.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
                             Publications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/magazine.html" class="text-gray-400 hover:text-[#528bf2] transition-colors text-sm">
+                            Magazine
                         </a>
                     </li>
                 </ul>
@@ -577,10 +582,10 @@
         <div class="mt-12 pt-8 border-t border-white/10">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-gray-500 text-sm">
-                    © 2024 - 2026 STEM October Physics Club. All rights reserved. Powered by STEM High School for Boys — 6th of October.
+                    © 2024 - 2026 STEM October Physics Club. All rights reserved. Powered by STEM High School for Boys  |  6th of October.
                 </p>
                 <div class="flex gap-6">
-                    <a href="about.html" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
+                    <a href="/pages/about.html" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
                         About
                     </a>
                     <a href="https://iphr.octphysicsclub.org/" class="text-gray-500 hover:text-[#528bf2] transition-colors text-sm">
@@ -630,5 +635,8 @@
         counters.forEach(counter => observer.observe(counter));
     });
 </script>
+<script defer src="/assets/vendor/gsap/gsap.min.js"></script>
+<script defer src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script defer src="/assets/site-motion.js"></script>
 </body>
 </html>

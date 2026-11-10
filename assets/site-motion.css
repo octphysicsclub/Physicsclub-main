@@ -1,0 +1,59 @@
+/* Shared layout polish and motion support */
+body{isolation:isolate}
+main{position:relative;isolation:isolate}
+.site-motion-atmosphere{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse at 13% 20%,rgba(49,103,203,.12),transparent 29%),radial-gradient(ellipse at 84% 40%,rgba(103,76,193,.09),transparent 30%),radial-gradient(ellipse at 45% 88%,rgba(37,134,169,.06),transparent 33%);will-change:transform,opacity}
+.site-desktop-nav{position:relative;flex:1 1 auto;justify-content:center}
+.site-desktop-nav>.site-nav-list{position:relative;width:100%;justify-content:center;padding-right:150px}
+.site-desktop-nav>.site-nav-list>.site-nav-cta{position:absolute;right:0;white-space:nowrap}
+.site-desktop-nav a{transition:color .22s ease,background-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.hero-backdrop-image,.hero-aurora,.hero-orbit{animation:none!important}
+.hero-backdrop-image{transform:scale(1.04)}
+@media(prefers-reduced-motion:reduce){.site-motion-atmosphere{display:none}.hero-backdrop-image,.hero-aurora,.hero-orbit{animation:none!important;transform:none!important}}
+
+/* Program cards: a controlled pointer highlight and restrained depth on desktop. */
+.program-card{position:relative;isolation:isolate;overflow:hidden;transform-style:preserve-3d;transition:border-color .3s ease,box-shadow .35s ease,background-color .35s ease}
+.program-card:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;background:radial-gradient(360px circle at var(--pointer-x,50%) var(--pointer-y,50%),rgba(94,148,247,.16),transparent 68%);transition:opacity .32s ease}
+.program-card>*{position:relative;z-index:1}
+.program-card:hover,.program-card:focus-within{border-color:rgba(105,158,255,.48);box-shadow:0 18px 42px rgba(0,0,0,.26),0 0 24px rgba(60,110,208,.09)}
+.program-card:hover:before,.program-card:focus-within:before{opacity:1}
+@media(max-width:480px){.program-card{padding:1.25rem!important}.program-card>div:first-child{gap:12px}.program-card h3{font-size:1.12rem;line-height:1.3}.program-card p{font-size:.9rem;line-height:1.65}.program-card .pt-6{padding-top:1.15rem}}
+@media(hover:none){.program-card:active{border-color:rgba(105,158,255,.55)}}
+@media(prefers-reduced-motion:reduce){.program-card,.program-card:before{transition:none}.program-card:before{display:none}}
+
+/* Native multi-page transitions: short compositor-only fade and lift, with instant navigation fallback. */
+@view-transition{navigation:auto}
+::view-transition-group(root){animation-duration:.26s}
+::view-transition-old(root){animation:site-page-out .13s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:site-page-in .26s cubic-bezier(.22,.72,.18,1) both}
+@keyframes site-page-out{to{opacity:0;transform:translateY(-3px) scale(.998)}}
+@keyframes site-page-in{from{opacity:0;transform:translateY(7px) scale(.998)}}
+@media(prefers-reduced-motion:reduce){::view-transition-group(root),::view-transition-old(root),::view-transition-new(root){animation-duration:.01ms!important}}
+
+/* Match YPWC reader headings to the stronger hierarchy of the original journal articles. */
+.ypwc-nav~.reader-sheet .reader-content h1{font-size:clamp(2.05rem,4.8vw,3.25rem);font-weight:750;line-height:1.14;letter-spacing:-.035em}
+.ypwc-nav~.reader-sheet .article-body h2{font-size:clamp(1.45rem,2.6vw,1.75rem);font-weight:750;line-height:1.28;margin:1.8em 0 .72em}
+.ypwc-nav~.reader-sheet .article-body h3{font-size:clamp(1.15rem,2vw,1.35rem);font-weight:700;line-height:1.35}
+/* Keep the dense LIGO panel readable at roughly twice its original display width. */
+.reader-content .article-section figure.figure-ligo{width:100%;max-width:800px;margin:1.8rem auto;padding:16px}
+.reader-content .article-section figure.figure-ligo img{display:block;width:min(100%,760px)!important;max-width:760px!important;max-height:none!important;height:auto!important;margin-inline:auto;object-fit:contain}
+.reader-content .article-section figure.figure-ligo figcaption{width:min(100%,760px);max-width:760px;font-size:.82rem;line-height:1.55}
+@media(max-width:640px){.reader-content .article-section figure.figure-ligo{width:100%;padding:10px}.reader-content .article-section figure.figure-ligo img{width:100%!important;max-width:100%!important}}
+
+
+/* Persistent spacetime grid, revealed outward during same-origin page transitions. */
+.site-transition-ripple{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.18;
+  view-transition-name:site-ripple;mix-blend-mode:screen;
+  background-image:linear-gradient(180deg,rgba(8,10,16,.04),rgba(8,10,16,.42)),url("magazine/spacetime-grid.svg");
+  background-position:center,center 38%;background-size:cover,min(1600px,100vw) auto;background-repeat:no-repeat;
+  will-change:opacity,transform
+}
+::view-transition-group(site-ripple){z-index:2;overflow:visible}
+::view-transition-old(site-ripple){animation:site-ripple-old .68s ease both}
+::view-transition-new(site-ripple){
+  opacity:1;mix-blend-mode:screen;clip-path:circle(0% at 50% 50%);
+  animation:site-ripple-reveal .68s cubic-bezier(.16,.74,.2,1) both
+}
+@keyframes site-ripple-old{0%,28%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.025)}}
+@keyframes site-ripple-reveal{0%{clip-path:circle(0% at 50% 50%);transform:scale(.96)}72%{clip-path:circle(110% at 50% 50%);transform:scale(1.02)}100%{clip-path:circle(150% at 50% 50%);transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.site-transition-ripple{will-change:auto}::view-transition-group(site-ripple),::view-transition-old(site-ripple),::view-transition-new(site-ripple){animation-duration:.01ms!important;clip-path:none!important;transform:none!important}}
